@@ -1,12 +1,15 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// Icons
+import IconAerolabCTA from "@/../public/icons/aerolab-icon-button-cta.svg";
+import Arrow from "@/../public/icons/arrow-icon.svg";
 
 interface ButtonProps {
   variant?: "cta" | "landing-cta" | "sort-selector";
   children?: React.ReactNode;
   onClick: () => void;
-  selected?: boolean; // Para sort-selector
+  selected?: boolean;
 }
 
 const StyledButton = styled.button<{ variant: string; selected?: boolean }>`
@@ -30,12 +33,12 @@ const Button = ({
     <StyledButton variant={variant} onClick={onClick} selected={selected}>
       {variant === "cta" && (
         <>
-          Redeem for <FontAwesomeIcon icon={} />
+          {children} <IconAerolabCTA />
         </>
       )}
       {variant === "landing-cta" && (
         <>
-          VIEW PRODUCT <FontAwesomeIcon icon={} />
+          {children} <Arrow />
         </>
       )}
       {variant === "sort-selector" && (selected ? "Selected" : "Select")}
