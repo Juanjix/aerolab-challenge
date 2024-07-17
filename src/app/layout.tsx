@@ -6,6 +6,9 @@ import GlobalStyle from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/themes";
 
+// Menu
+import Menu from "./components/Menu/Menu";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -16,7 +19,10 @@ export default function RootLayout({
       <body>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <StyledComponentsRegistry>
+            <Menu />
+            {children}
+          </StyledComponentsRegistry>
         </ThemeProvider>
       </body>
     </html>
