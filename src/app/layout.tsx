@@ -1,10 +1,10 @@
 "use client";
 
 // Styled
-import styled from "styled-components";
 import StyledComponentsRegistry from "./registry";
-
-const StyledLayout = styled.body``;
+import GlobalStyle from "./styles/globalStyles";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/themes";
 
 export default function RootLayout({
   children,
@@ -13,9 +13,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <StyledLayout>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-      </StyledLayout>
+      <body>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

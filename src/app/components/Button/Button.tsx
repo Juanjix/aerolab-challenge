@@ -1,48 +1,43 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-// Icons
-import IconAerolabCTA from "@/../public/icons/aerolab-icon-button-cta.svg";
-import Arrow from "@/../public/icons/arrow-icon.svg";
-
 interface ButtonProps {
   variant?: "cta" | "landing-cta" | "sort-selector";
-  children?: React.ReactNode;
+  children: React.ReactNode;
   onClick: () => void;
-  selected?: boolean;
 }
 
-const StyledButton = styled.button<{ variant: string; selected?: boolean }>`
+const StyledButton = styled.button<{ $variant: string }>`
+  text-transform: uppercase;
   border-radius: 4px;
   cursor: pointer;
   font-family: ${({ theme }) => theme.fonts.cta};
   background: ${({ theme }) => theme.colors.brand};
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 
-  ${({ variant }) => variant === "cta" && ctaStyles}
-  ${({ variant }) => variant === "landing-cta" && landingStyle}
-  ${({ variant }) => variant === "sort-selector" && sortSelectorStyles}
+  svg {
+    * {
+      background-color: white;
+    }
+  }
+
+  ${({ $variant }) => $variant === "cta" && ctaStyles}
+  ${({ $variant }) => $variant === "landing-cta" && landingStyle}
+  ${({ $variant }) => $variant === "sort-selector" && tertiaryStyles}
 `;
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   variant = "cta",
   children,
   onClick,
-  selected,
-}: ButtonProps) => {
+}) => {
   return (
-    <StyledButton variant={variant} onClick={onClick} selected={selected}>
-      {variant === "cta" && (
-        <>
-          {children} <IconAerolabCTA />
-        </>
-      )}
-      {variant === "landing-cta" && (
-        <>
-          {children} <Arrow />
-        </>
-      )}
-      {variant === "sort-selector" && (selected ? "Selected" : "Select")}
-      {children}
+    <StyledButton $variant={variant} onClick={onClick}>
+      {variant === "cta" && <>{children}</>}
     </StyledButton>
   );
 };
@@ -52,6 +47,10 @@ export default Button;
 const ctaStyles = css`
   color: white;
   border: none;
+
+  svg {
+    margin-left: 12px;
+  }
 
   &:hover {
     background: ${({ theme }) => theme.colors.brandHover};
@@ -77,7 +76,7 @@ const landingStyle = css`
   }
 `;
 
-const sortSelectorStyles = css`
+const tertiaryStyles = css`
   background: transparent;
   color: ${({ theme }) => theme.colors.primary};
   border: none;

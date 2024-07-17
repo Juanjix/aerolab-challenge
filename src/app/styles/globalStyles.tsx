@@ -1,18 +1,19 @@
 "use client";
 import { createGlobalStyle } from "styled-components";
+import reset from "./reset";
 
 const GlobalStyle = createGlobalStyle`
+  ${reset}
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: ${({ theme }) => theme.fonts.primary};
     background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.neutral__600};
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin: 0;
     font-family: ${({ theme }) => theme.fonts.primary};
   }
 
@@ -20,10 +21,11 @@ const GlobalStyle = createGlobalStyle`
     font-size: 96px;
     font-weight: 900;
     line-height: 80%;
-    letter-spacing: 0%;
+    letter-spacing: 0;
 
     @media screen (min-width: 920px){
       font-size: 200px;
+      margin: 0;
     }
   }
 
@@ -31,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 32px;
     font-weight: 900;
     line-height: 80%;
-    letter-spacing: 0%;
+    letter-spacing: 0;
 
     @media screen (min-width: 920px){
       font-size: 42px;
@@ -42,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 24px;
     font-weight: 900;
     line-height: 80%;
-    letter-spacing: 0%;
+    letter-spacing: 0;
 
     @media screen (min-width: 920px){
       font-size: 32px;
@@ -53,7 +55,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-weight: 600;
     line-height: 150%;
-    letter-spacing: 0%;
+    letter-spacing: 0;
+    color: ${({ theme }) => theme.colors.neutral__600};
 
     @media screen (min-width: 920px){
       font-size: 18px;
@@ -66,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
     &.small{
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0%;
+      letter-spacing: 0;
 
       @media screen (min-width: 920px){
         font-size: 14px;
