@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/themes";
 
 // Menu
-import Menu from "./components/Menu/Menu";
+import Menu from "@/components/Menu/Menu";
 
 export default function RootLayout({
   children,

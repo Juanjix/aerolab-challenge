@@ -16,9 +16,10 @@ const StyledButton = styled.button<{ $variant: string; $isOpen?: boolean }>`
   padding: 18px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 auto;
   border-radius: 18px;
+  min-width: 143px;
 
   svg {
     * {
@@ -41,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
 
   const handleDropdownClick = () => {
     setIsOpen(!isOpen);
-    if (onClick) onClick(); // Llama a onClick si está definido
+    if (onClick) onClick();
   };
 
   return (
@@ -111,7 +112,6 @@ const aeroPayStyles = css`
   }
 
   svg {
-    margin-left: 12px;
     transition: transform 0.3s;
 
     ${({ $isOpen }) =>
