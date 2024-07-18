@@ -4,10 +4,11 @@ import React from "react";
 import styled from "styled-components";
 
 // Components
-import Button from "@/app/components/Button/Button";
+import Button from "../Button/Button";
 
 // Icons
-import { Arrow } from "../../../../public/icons/arrow";
+
+import { Arrow } from "../../../public/icons/arrow";
 
 // URL del SVG
 const svgUrl = "/icons/background-wave.svg";

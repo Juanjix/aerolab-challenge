@@ -2,10 +2,10 @@
 import styled from "styled-components";
 
 // Icons
-import { AerolabIconMobile } from "../../../../public/icons/aerolabIconMobile";
-import { AerolabLogo } from "../../../../public/icons/aerolab-logo";
-import Kite from "../../../../public/icons/kite-icon";
-import ArrowPay from "../../../../public/icons/arrow-pay";
+import { AerolabIconMobile } from "../../../public/icons/aerolabIconMobile";
+import { AerolabLogo } from "../../../public/icons/aerolab-logo";
+import Kite from "../../../public/icons/kite-icon";
+import ArrowPay from "../../../public/icons/arrow-pay";
 import Button from "../Button/Button";
 
 const StyledMenu = styled.menu`

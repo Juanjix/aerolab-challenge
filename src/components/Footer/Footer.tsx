@@ -1,7 +1,8 @@
 // Styled
 import styled from "styled-components";
 
-import Github from "../../../../public/icons/github-logo";
+// Icons
+import Github from "../../../public/icons/github-logo";
 
 const StyledFooter = styled.footer`
   padding: 60px 0;
