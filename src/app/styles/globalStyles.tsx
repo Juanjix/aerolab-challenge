@@ -1,6 +1,7 @@
 "use client";
-import { createGlobalStyle } from "styled-components";
+
 import reset from "./reset";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -8,16 +9,18 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: ${({ theme }) => theme.fonts.primary};
+    font-family: ${({ theme }) => theme.fonts.primary}
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.neutral__600};
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, p {
     font-family: ${({ theme }) => theme.fonts.primary};
+    color: black;
   }
 
-  h1{
+ 
+   h1{
     font-size: 96px;
     font-weight: 900;
     line-height: 80%;
@@ -63,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     &.all-caps{
-      letter-spacing: 24%;
+      letter-spacing: 24;
     }
 
     &.small{

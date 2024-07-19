@@ -1,5 +1,10 @@
+"use client";
+
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+
+// Icons
+import Kite from "../../../public/icons/kite-icon";
 
 interface ButtonProps {
   variant?: "cta" | "landing-cta" | "sort-selector" | "aero-pay";
@@ -17,7 +22,6 @@ const StyledButton = styled.button<{ $variant: string; $isOpen?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
   border-radius: 18px;
   min-width: 143px;
 
@@ -50,8 +54,14 @@ const Button: React.FC<ButtonProps> = ({
       $variant={variant}
       $isOpen={isOpen}
       onClick={variant === "aero-pay" ? handleDropdownClick : onClick}>
-      {variant === "cta" && <>{children}</>}
+      {variant === "cta" && (
+        <>
+          {children}
+          <Kite />{" "}
+        </>
+      )}
       {variant === "aero-pay" && <>{children}</>}
+      {variant === "landing-cta" && <>{children}</>}
     </StyledButton>
   );
 };
@@ -88,15 +98,19 @@ const landingStyle = css`
     background: ${({ theme }) => theme.colors.primary};
     color: white;
   }
+
+  svg {
+    margin-left: 8px;
+  }
 `;
 
 const tertiaryStyles = css`
-  background: transparent;
+  background: ${({ theme }) => theme.colors.brand};
   color: ${({ theme }) => theme.colors.primary};
   border: none;
 
   &:hover {
-    text-decoration: underline;
+    background: ${({ theme }) => theme.colors.neutral__300};
   }
 `;
 

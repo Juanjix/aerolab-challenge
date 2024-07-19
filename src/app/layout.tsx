@@ -9,6 +9,14 @@ import { theme } from "./styles/themes";
 // Menu
 import Menu from "@/components/Menu/Menu";
 
+// // Meta
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Liteflix",
+//   description: "Litebox challenge by Juanso",
+// };
+
 export default function RootLayout({
   children,
 }: Readonly<{

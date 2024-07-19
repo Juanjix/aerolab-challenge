@@ -20,10 +20,12 @@ const StyledHero = styled.section`
 
   .uppercase {
     text-transform: uppercase;
+    letter-spacing: 10px;
   }
 
   .titulo {
     margin: 20px 0 30px 0;
+    text-transform: uppercase;
   }
 
   span {
@@ -34,7 +36,9 @@ const StyledHero = styled.section`
   }
 
   .cta-button {
-    margin-top: 20px;
+    button {
+      margin: 20px auto 0 auto;
+    }
   }
 `;
 
@@ -55,7 +59,7 @@ const Hero: React.FC = () => {
         exchange them for cool tech.
       </p>
       <div className="cta-button">
-        <Button variant="cta" onClick={handleButtonClick}>
+        <Button variant="landing-cta" onClick={handleButtonClick}>
           View all Products <Arrow />
         </Button>
       </div>

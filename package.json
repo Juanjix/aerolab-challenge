@@ -9,16 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/montserrat": "^5.0.18",
+    "@vercel/postgres": "^0.9.0",
+    "drizzle-orm": "^0.32.0",
+    "drizzle-orm-pg": "^0.16.3",
     "next": "14.2.5",
+    "pg": "^8.12.0",
+    "postgres": "^3.4.4",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "vercel": "^35.0.3"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "drizzle-kit": "^0.23.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "typescript": "^5"

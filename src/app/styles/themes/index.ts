@@ -1,9 +1,5 @@
 import { DefaultTheme } from "styled-components";
 
-// Importa las fuentes desde Google Fonts
-
-import "@fontsource/montserrat/500.css";
-import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/900.css";
 
 export const theme: DefaultTheme = {
@@ -30,6 +26,6 @@ export const theme: DefaultTheme = {
     aerolab: "linear-gradient(180deg, #FF8800 0%, #FF6600 100%)",
   },
   fonts: {
-    primary: "'Monteserrat', sans-serif'",
+    primary: "Montserrat",
   },
 };
