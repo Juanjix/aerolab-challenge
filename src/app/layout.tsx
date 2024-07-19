@@ -8,6 +8,7 @@ import { theme } from "./styles/themes";
 
 // Menu
 import Menu from "@/components/Menu/Menu";
+import Footer from "@/components/Footer/Footer";
 
 // // Meta
 // import { Metadata } from "next";
@@ -30,6 +31,7 @@ export default function RootLayout({
           <StyledComponentsRegistry>
             <Menu />
             {children}
+            <Footer />
           </StyledComponentsRegistry>
         </ThemeProvider>
       </body>

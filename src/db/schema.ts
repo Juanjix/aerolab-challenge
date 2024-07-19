@@ -1,7 +1,4 @@
-// types.ts
-
 import { pgTable, serial, text, integer, timestamp } from "drizzle-orm/pg-core";
-
 import { InferInsertModel, InferSelectModel } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/vercel-postgres";
 import { sql } from "@vercel/postgres";

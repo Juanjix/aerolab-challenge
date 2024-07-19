@@ -10,6 +10,11 @@ const StyledFooter = styled.footer`
   a {
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 12px;
+    }
   }
 `;
 

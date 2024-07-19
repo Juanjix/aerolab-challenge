@@ -1,7 +1,3 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import { migrate } from "drizzle-orm/postgres-js/migrator";
-import postgres from "postgres";
-const sql = postgres("...", { max: 1 });
-const db = drizzle(sql);
-migrate(db, { migrationsFolder: "drizzle" });
-sql.end();
+import { sql } from "@vercel/postgres";
+import { drizzle } from "drizzle-orm/vercel-postgres";
+export const db = drizzle(sql);

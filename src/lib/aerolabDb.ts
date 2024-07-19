@@ -1,7 +1,3 @@
-// require("dotenv").config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// });
-
 const API_PRODUCT = "https://coding-challenge-api.aerolab.co/products";
 const API_USER = "https://coding-challenge-api.aerolab.co/user";
 const API_TOKEN =

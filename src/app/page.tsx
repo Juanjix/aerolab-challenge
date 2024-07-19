@@ -3,16 +3,13 @@
 
 // Sections
 import Hero from "@/components/Hero/Hero";
+import WalkthroughSection from "@/components/WalkthroughSection";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <div>
-        {/* {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))} */}
-      </div>
+      <WalkthroughSection />
     </main>
   );
 }
