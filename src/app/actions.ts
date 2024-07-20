@@ -1,12 +1,15 @@
 "use server";
 
-const API_URL = "https://coding-challenge-api.aerolab.co/products";
+const API_BASE = "https://coding-challenge-api.aerolab.co";
+
+const API_PRODUCT = "https://coding-challenge-api.aerolab.co/product";
+const API_USER = "https://coding-challenge-api.aerolab.co/user/me";
 const API_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Njk4ODhiNDM3NmIzZjAwMWYwZjY3YmMiLCJpYXQiOjE3MjEyNzI1MDB9.mSgJ0RppbZX8b96Ez6YJTTXo8qNgy38YVps1dXZk0AA";
 
-// Action to get Products
-export async function getProducts() {
-  const res = await fetch(API_URL, {
+// Accion para traer los productos
+export async function fetchFromAPI(url: string) {
+  const res = await fetch(`${API_BASE}${url}`, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,
       "Content-Type": "application/json",
@@ -14,10 +17,22 @@ export async function getProducts() {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch products from API");
+    throw new Error("Failed to fetch from API");
   }
 
-  const productsData = await res.json();
+  const data = await res.json();
 
-  return productsData;
+  return data;
+}
+
+// Accion para traer el usuario
+export async function getUser() {
+  const data = await fetchFromAPI("/user/me");
+  return data;
+}
+
+// Accion para traer el usuario
+export async function getProducts() {
+  const data = await fetchFromAPI("/products");
+  return data;
 }

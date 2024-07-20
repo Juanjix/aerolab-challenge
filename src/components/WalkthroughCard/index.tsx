@@ -77,7 +77,15 @@ const WalkthroughCard: React.FC<{ WalkthroughProps: WalkthroughProps }> = ({
     <StyledWalkCard>
       <div className="inside-card">
         <div className="image-container">
-          <Image src={imagen} alt="" fill objectFit="cover" sizes="" />
+          <Image
+            src={imagen}
+            alt=""
+            style={{
+              objectFit: "cover", // cover, contain, none
+            }}
+            fill
+            sizes="(min-width: 808px) 50vw, 100vw"
+          />
         </div>
         <div className="text-container">
           <h3 className="step">

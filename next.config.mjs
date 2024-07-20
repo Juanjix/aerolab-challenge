@@ -4,8 +4,17 @@ const nextConfig = {
     styledComponents: true,
   },
   reactStrictMode: true,
+  // images: {
+  //   domains: ["coding-challenge-api.aerolab.co"],
+  // },
   images: {
-    domains: ["coding-challenge-api.aerolab.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "coding-challenge-api.aerolab.co",
+        pathname: "**",
+      },
+    ],
   },
   typescript: {
     ignoreBuildErrors: true,

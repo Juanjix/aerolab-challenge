@@ -6,8 +6,6 @@ import ProductSection from "@/components/ProductSection";
 import WalkthroughSection from "@/components/WalkthroughSection";
 import { getProducts } from "./actions";
 import { Product } from "@/types";
-import { products } from "@/db/schema";
-import NotificationToast from "@/components/NotificationToast";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,30 +25,15 @@ export default function Home() {
     }
 
     loadProducts();
-  }, []); // El array vacío asegura que esto se ejecute solo una vez después del primer renderizado
+  }, []);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
   return (
     <main>
       <Hero />
       <WalkthroughSection />
+      {loading && <p>Loading ... </p>}
+      {error ? <p>error</p> : ""}
       <ProductSection data={products} />
-      <NotificationToast
-        message="Product name
-redeemed successfully"
-        type="error"
-      />
-      <NotificationToast
-        message="There was a problem
-with the transaction"
-        type="success"
-      />
     </main>
   );
 }

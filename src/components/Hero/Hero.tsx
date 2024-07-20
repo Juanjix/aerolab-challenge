@@ -7,7 +7,6 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 
 // Icons
-
 import { Arrow } from "../../../public/icons/arrow";
 
 // URL del SVG
@@ -15,7 +14,7 @@ const svgUrl = "/icons/background-wave.svg";
 
 const StyledHero = styled.section`
   text-align: center;
-  background: url(${svgUrl}) repeat;
+  background: repeat center url(${svgUrl});
 
   .uppercase {
     text-transform: uppercase;
@@ -42,9 +41,7 @@ const StyledHero = styled.section`
 `;
 
 const Hero: React.FC = () => {
-  const handleButtonClick = () => {
-    // console.log("CTA Button clicked!");
-  };
+  const handleButtonClick = () => {};
 
   return (
     <StyledHero>
