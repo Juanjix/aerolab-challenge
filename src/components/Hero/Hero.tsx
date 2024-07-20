@@ -15,7 +15,6 @@ const svgUrl = "/icons/background-wave.svg";
 
 const StyledHero = styled.section`
   text-align: center;
-  padding: 60px 0;
   background: url(${svgUrl}) repeat;
 
   .uppercase {

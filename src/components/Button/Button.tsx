@@ -3,9 +3,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-// Icons
-import Kite from "../../../public/icons/kite-icon";
-
 interface ButtonProps {
   variant?: "cta" | "landing-cta" | "sort-selector" | "aero-pay";
   children: React.ReactNode;
@@ -54,14 +51,7 @@ const Button: React.FC<ButtonProps> = ({
       $variant={variant}
       $isOpen={isOpen}
       onClick={variant === "aero-pay" ? handleDropdownClick : onClick}>
-      {variant === "cta" && (
-        <>
-          {children}
-          <Kite />{" "}
-        </>
-      )}
-      {variant === "aero-pay" && <>{children}</>}
-      {variant === "landing-cta" && <>{children}</>}
+      {children}
     </StyledButton>
   );
 };

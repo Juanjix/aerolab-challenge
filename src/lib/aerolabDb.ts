@@ -16,7 +16,7 @@ export async function getUser() {
   return res.json();
 }
 
-export async function fetchAndSaveProducts() {
+export async function getProducts() {
   const res = await fetch(API_PRODUCT, {
     headers: {
       Authorization: `Bearer ${API_TOKEN}`,

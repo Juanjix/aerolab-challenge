@@ -1,13 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compiler: {
-    styledComponents: true,
-  },
+  reactStrictMode: true,
   images: {
-    domains: ["images.ctfassets.net"],
-  },
-  typescript: {
-    ignoreBuildErrors: true,
+    domains: ["coding-challenge-api.aerolab.co"],
   },
 };
 

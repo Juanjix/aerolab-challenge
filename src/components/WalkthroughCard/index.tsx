@@ -3,8 +3,9 @@ import Image from "next/image";
 import Icon from "../../../public/icons/icon-titulo";
 import { StaticImageData } from "next/image";
 
+// Definición de los estilos
 const StyledWalkCard = styled.div`
-  max-width: 532px;
+  max-width: 432px;
   border-radius: 18px;
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
   margin: 0 auto;
@@ -15,6 +16,7 @@ const StyledWalkCard = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.neutral__300};
     border-radius: 18px;
     background-color: white;
+    overflow: hidden;
 
     .image-container {
       display: flex;
@@ -25,9 +27,9 @@ const StyledWalkCard = styled.div`
       height: 0;
       padding-top: 75%;
       position: relative;
-      background: ${({ theme }) => theme.colors.brand};
       border-top-left-radius: 18px;
       border-top-right-radius: 18px;
+      background: ${({ theme }) => theme.colors.brand};
     }
 
     .image-container img {
@@ -38,13 +40,14 @@ const StyledWalkCard = styled.div`
       height: 100%;
       object-fit: cover;
       border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
     }
 
-    .text-section {
+    .text-container {
       padding: 20px;
       border-radius: 18px;
 
-      .icon-titulo {
+      .step {
         display: flex;
         align-items: center;
         margin-bottom: 12px;
@@ -57,31 +60,31 @@ const StyledWalkCard = styled.div`
   }
 `;
 
+// Interfaz para las propiedades
 interface WalkthroughProps {
   imagen: StaticImageData;
   titulo: string;
   sentence: string;
 }
 
-const WalkthroughCard = (props: { WalkthroughProps: WalkthroughProps }) => {
+// Componente funcional
+const WalkthroughCard: React.FC<{ WalkthroughProps: WalkthroughProps }> = ({
+  WalkthroughProps,
+}) => {
+  const { imagen, titulo, sentence } = WalkthroughProps;
+
   return (
     <StyledWalkCard>
       <div className="inside-card">
         <div className="image-container">
-          <Image
-            src={props.WalkthroughProps.imagen}
-            alt=""
-            layout="fill"
-            objectFit="cover"
-          />
+          <Image src={imagen} alt="" layout="fill" objectFit="cover" />
         </div>
-
-        <div className="text-section">
-          <h3 className="icon-titulo">
+        <div className="text-container">
+          <h3 className="step">
             <Icon />
-            {props.WalkthroughProps.titulo}
+            {titulo}
           </h3>
-          <p>{props.WalkthroughProps.sentence}</p>
+          <p>{sentence}</p>
         </div>
       </div>
     </StyledWalkCard>

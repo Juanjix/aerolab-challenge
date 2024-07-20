@@ -87,6 +87,14 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 500; 
   }
 
+  section{
+    padding: 60px 0;
+
+    @media (min-width: 920px){
+      padding: 120px 0;
+    }
+  }
+
 `;
 
 export default GlobalStyle;

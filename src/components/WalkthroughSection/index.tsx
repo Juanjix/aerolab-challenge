@@ -9,7 +9,12 @@ import Step3 from "@/../public/images/Saly-3.png";
 const StyledWalkthrough = styled.section`
   background: ${({ theme }) => theme.colors.brand};
   padding: 120px 0;
-  display: flex;
+
+  @media (min-width: 920px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const WalkthrougData = [
