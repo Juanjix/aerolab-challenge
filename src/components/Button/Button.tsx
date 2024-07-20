@@ -6,10 +6,16 @@ import styled, { css } from "styled-components";
 interface ButtonProps {
   variant?: "cta" | "landing-cta" | "sort-selector" | "aero-pay";
   children: React.ReactNode;
+
   onClick: () => void;
 }
 
-const StyledButton = styled.button<{ $variant: string; $isOpen?: boolean }>`
+interface StyledButtonProps {
+  $variant: string;
+  $isOpen?: boolean;
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
   text-transform: uppercase;
   border-radius: 4px;
   cursor: pointer;
@@ -29,7 +35,7 @@ const StyledButton = styled.button<{ $variant: string; $isOpen?: boolean }>`
   }
 
   ${({ $variant }) => $variant === "cta" && ctaStyles}
-  ${({ $variant }) => $variant === "landing-cta" && landingStyle}
+  ${({ $variant }) => $variant === "landing-cta" && landingCtaStyle}
   ${({ $variant }) => $variant === "sort-selector" && tertiaryStyles}
   ${({ $variant }) => $variant === "aero-pay" && aeroPayStyles}
 `;
@@ -79,7 +85,7 @@ const ctaStyles = css`
   }
 `;
 
-const landingStyle = css`
+const landingCtaStyle = css`
   background: ${({ theme }) => theme.colors.brand};
   color: white;
   border: 1px solid ${({ theme }) => theme.colors.primary};
@@ -117,11 +123,5 @@ const aeroPayStyles = css`
 
   svg {
     transition: transform 0.3s;
-
-    ${({ $isOpen }) =>
-      $isOpen &&
-      css`
-        transform: rotate(180deg);
-      `}
   }
 `;

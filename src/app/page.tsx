@@ -7,6 +7,7 @@ import WalkthroughSection from "@/components/WalkthroughSection";
 import { getProducts } from "./actions";
 import { Product } from "@/types";
 import { products } from "@/db/schema";
+import NotificationToast from "@/components/NotificationToast";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -35,12 +36,21 @@ export default function Home() {
   if (error) {
     return <p>{error}</p>;
   }
-  console.log(products);
   return (
     <main>
       <Hero />
       <WalkthroughSection />
       <ProductSection data={products} />
+      <NotificationToast
+        message="Product name
+redeemed successfully"
+        type="error"
+      />
+      <NotificationToast
+        message="There was a problem
+with the transaction"
+        type="success"
+      />
     </main>
   );
 }

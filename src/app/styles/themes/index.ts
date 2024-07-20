@@ -1,6 +1,10 @@
 import { DefaultTheme } from "styled-components";
 
 import "@fontsource/montserrat/900.css";
+import "@fontsource/montserrat/800.css";
+import "@fontsource/montserrat/700.css";
+import "@fontsource/montserrat/600.css";
+import "@fontsource/montserrat/500.css";
 
 export const theme: DefaultTheme = {
   colors: {

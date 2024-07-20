@@ -1,14 +1,8 @@
 // types.ts
 
 import { InferSelectModel, InferInsertModel } from "drizzle-orm";
-import {
-  pgTable,
-  serial,
-  text,
-  integer,
-  timestamp,
-  json,
-} from "drizzle-orm/pg-core";
+import { pgTable, serial, text, integer, timestamp } from "drizzle-orm/pg-core";
+import { Key } from "react";
 
 // Define the User table
 export const users = pgTable("users", {
@@ -33,6 +27,7 @@ export const users = pgTable("users", {
 // });
 
 export interface Product {
+  id: Key | null | undefined;
   _id: string;
   name: string;
   description?: string;

@@ -43,7 +43,7 @@ const StyledHero = styled.section`
 
 const Hero: React.FC = () => {
   const handleButtonClick = () => {
-    console.log("CTA Button clicked!");
+    // console.log("CTA Button clicked!");
   };
 
   return (
