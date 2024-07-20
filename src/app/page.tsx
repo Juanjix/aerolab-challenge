@@ -1,10 +1,17 @@
 "use client";
 
+// Estados
 import { useState, useEffect } from "react";
+
+// Secciones
 import Hero from "@/components/Hero/Hero";
 import ProductSection from "@/components/ProductSection";
 import WalkthroughSection from "@/components/WalkthroughSection";
+
+// Acciones
 import { getProducts } from "./actions";
+
+//Types
 import { Product } from "@/types";
 
 export default function Home() {

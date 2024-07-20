@@ -5,7 +5,7 @@ import { StaticImageData } from "next/image";
 
 // Definición de los estilos
 const StyledWalkCard = styled.div`
-  max-width: 432px;
+  max-width: 320px;
   border-radius: 18px;
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
   margin: 0 auto;
@@ -81,7 +81,7 @@ const WalkthroughCard: React.FC<{ WalkthroughProps: WalkthroughProps }> = ({
             src={imagen}
             alt=""
             style={{
-              objectFit: "cover", // cover, contain, none
+              objectFit: "cover",
             }}
             fill
             sizes="(min-width: 808px) 50vw, 100vw"
