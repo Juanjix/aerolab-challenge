@@ -44,6 +44,14 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ $variant }) => $variant === "number-selector" && numberSelectorStyles}
 `;
 
+const GradientText = styled.span`
+  background: linear-gradient(102.47deg, #176feb 0%, #ff80ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback for browsers that do not support these properties */
+`;
+
 const Button: React.FC<ButtonProps> = ({
   variant = "cta",
   children,
@@ -61,7 +69,11 @@ const Button: React.FC<ButtonProps> = ({
       $variant={variant}
       $isOpen={isOpen}
       onClick={variant === "aero-pay-dropdown" ? handleDropdownClick : onClick}>
-      {children}
+      {variant === "aero-pay-dropdown" ? (
+        <GradientText>{children}</GradientText>
+      ) : (
+        <>{children}</>
+      )}
     </StyledButton>
   );
 };
@@ -71,12 +83,11 @@ export default Button;
 const ctaStyles = css`
   color: white;
   border: none;
-
-  padding: 30px 60px;
-
-  svg {
-    margin-left: 12px;
-  }
+  padding: 10px 60px;
+  background: ${({ theme }) => theme.colors.brand};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &:hover {
     background: ${({ theme }) => theme.colors.brandHover};
@@ -94,7 +105,7 @@ const ctaStyles = css`
 const landingCtaStyle = css`
   background: ${({ theme }) => theme.colors.brand};
   color: white;
-  border: 1px solid ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.brand};
   padding: 32px 40px;
 
   &:hover {
@@ -107,13 +118,8 @@ const landingCtaStyle = css`
 `;
 
 const sortSelectorStyles = css`
-  background-color: ${({ theme }) => theme.colors.brand};
   background: ${({ theme }) => theme.colors.brand};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: ${({ theme }) => theme.colors.primary};
-  padding: 14px 20px;
+  padding: 8px 16px;
 
   &:hover {
     background: ${({ theme }) => theme.colors.neutral__300};
@@ -131,9 +137,16 @@ const aeroPayStyles = css`
   -webkit-text-fill-color: transparent;
   border: 1px solid ${({ theme }) => theme.colors.neutral__500};
   padding: 10px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.brandHover};
+    background: white;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback for browsers that do not support these properties */
   }
 
   svg {
@@ -142,21 +155,21 @@ const aeroPayStyles = css`
 `;
 
 const numberSelectorStyles = css`
-  background: ${({ theme }) => theme.colors.brandLight2};
+  background: ${({ theme }) => theme.colors.neutral__300};
+  color: white;
   border: 0;
   color: white;
   padding: 12px 18px;
+  &:hover{
+    background: ${({ theme }) => theme.colors.brandHover};
+  }
 
   svg {
     transition: transform 0.3s;
   }
 
   &:active {
-    background: ${({ theme }) => theme.colors.brand};
-    background: ${({ theme }) => theme.colors.brand};
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  
     background: ${({ theme }) => theme.colors.brand};
 
 `;

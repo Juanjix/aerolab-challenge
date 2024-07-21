@@ -10,12 +10,12 @@ import { theme } from "./styles/themes";
 import Menu from "@/components/Menu/Menu";
 import Footer from "@/components/Footer/Footer";
 
-// // Meta
+// Meta
 // import { Metadata } from "next";
 
 // export const metadata: Metadata = {
-//   title: "Liteflix",
-//   description: "Litebox challenge by Juanso",
+//   title: "Aerolab",
+//   description: "Aerolab challenge by Juanso",
 // };
 
 export default function RootLayout({

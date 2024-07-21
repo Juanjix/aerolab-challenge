@@ -9,7 +9,7 @@ import Container from "../Container";
 
 // Icons
 import { Arrow } from "../../../public/icons/arrow";
-import { AerolabIcon } from "../../../public/icons/aerolabIconDesktop";
+
 // URL del SVG
 const svgUrl = "/icons/background-wave.svg";
 
@@ -20,6 +20,7 @@ const StyledHero = styled.section`
   .text-container {
     width: 303px;
     margin: 0 auto;
+
     .uppercase {
       text-transform: uppercase;
       letter-spacing: 10px;

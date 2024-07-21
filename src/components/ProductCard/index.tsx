@@ -13,6 +13,7 @@ import { Product } from "@/types";
 import { theme } from "@/app/styles/themes";
 
 const StyledProductCard = styled.div`
+  margin-bottom: 40px;
   .product-card {
     border: 1px solid ${theme.colors.neutral__300};
     border-radius: 18px;
@@ -54,12 +55,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div>
             <div className="image-container">
               {product.img ? (
-                <Image src={product.img.url} width={280} height={204} alt="" />
+                <Image
+                  src={product.img.url}
+                  width={280}
+                  height={204}
+                  alt=""
+                  quality={100}
+                  loading="lazy"
+                  blurDataURL="../../public/images/lazy.png"
+                />
               ) : (
                 <Image src={Lazy} width={280} height={204} alt="" />
               )}
             </div>
-
             <div className="product-description">
               <p className="name">{product.name}</p>
               <p className="small type">{product.category}</p>

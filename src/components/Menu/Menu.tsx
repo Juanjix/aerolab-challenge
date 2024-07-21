@@ -1,3 +1,4 @@
+"use client";
 // Style
 import styled from "styled-components";
 import { useState, useEffect, useRef } from "react";
@@ -93,6 +94,7 @@ const Menu: React.FC = () => {
           <span>
             <Kite /> 1000{" "}
           </span>
+
           <ArrowPay />
         </Button>
         {showAeroPay && (
