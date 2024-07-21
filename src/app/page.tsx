@@ -40,7 +40,8 @@ export default function Home() {
       <WalkthroughSection />
       {loading && <p>Loading ... </p>}
       {error ? <p>error</p> : ""}
-      <ProductSection data={products} />
+
+      <ProductSection data={products} loading={loading} />
     </main>
   );
 }

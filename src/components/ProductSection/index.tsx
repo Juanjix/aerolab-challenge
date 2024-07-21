@@ -9,9 +9,11 @@ import ProductCard from "../ProductCard";
 import { Product } from "@/types";
 import Container from "../Container";
 import Button from "../Button/Button";
+import ProductCardSkeleton from "../ProductCardSkeleton";
 
 interface ProductSectionProps {
   data: Product[];
+  loading: boolean;
 }
 
 // Styled
@@ -122,7 +124,7 @@ const StyledProductSection = styled.section`
   }
 `;
 
-const ProductSection: React.FC<ProductSectionProps> = ({ data }) => {
+const ProductSection: React.FC<ProductSectionProps> = ({ data, loading }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleDropdownClick = () => {
@@ -190,9 +192,16 @@ const ProductSection: React.FC<ProductSectionProps> = ({ data }) => {
           </div>
         </div>
         <div className="products-container">
-          {data.map((product, key) => (
+          {/* {data.map((product, key) => (
             <ProductCard key={key} product={product} />
-          ))}
+          ))} */}
+          {loading
+            ? Array.from({ length: 9 }).map((_, index) => (
+                <ProductCardSkeleton key={index} />
+              ))
+            : data.map((product, key) => (
+                <ProductCard key={key} product={product} />
+              ))}
         </div>
       </Container>
     </StyledProductSection>
