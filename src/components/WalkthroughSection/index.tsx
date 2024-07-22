@@ -38,18 +38,19 @@ const StyledWalkthrough = styled.section`
 
     .illustration-container {
       position: absolute;
-      top: -105px;
+      top: -70px;
       left: 50%;
       transform: translateX(-50%);
       right: 50%;
       width: 100%;
       overflow: hidden;
-      max-width: 410px;
+      max-width: 460px;
+      width: 100%;
       display: block;
 
       @media (min-width: 1024px) {
         max-width: 580px;
-        top: -175px;
+        top: -350px;
       }
 
       @media (min-width: 1260px) {
