@@ -12,46 +12,49 @@ import Button from "../Button/Button";
 
 // Module
 import AeroPayModule from "../AeroPayModule";
+import Container from "../Container";
 
 const StyledMenu = styled.menu`
-  padding: 60px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
+  .menu-container {
+    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
 
-  .mobile {
-    display: block;
-  }
-
-  .desktop {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
     .mobile {
-      display: none;
+      display: block;
     }
 
     .desktop {
-      display: block;
+      display: none;
     }
-  }
 
-  span {
-    display: flex;
-    align-items: center;
-    margin-right: 12px;
-    svg {
-      margin-right: 5px;
+    @media (min-width: 768px) {
+      .mobile {
+        display: none;
+      }
+
+      .desktop {
+        display: block;
+      }
     }
-  }
 
-  .aero-pay-container {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    z-index: 10;
+    span {
+      display: flex;
+      align-items: center;
+      margin-right: 12px;
+      svg {
+        margin-right: 5px;
+      }
+    }
+
+    .aero-pay-container {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: 10;
+    }
   }
 `;
 
@@ -81,28 +84,32 @@ const Menu: React.FC = () => {
 
   return (
     <StyledMenu>
-      <div className="mobile">
-        <AerolabIconMobile />
-      </div>
-      <div className="desktop">
-        <AerolabLogo />
-      </div>
-      <div ref={aeroPayRef}>
-        <Button
-          variant="aero-pay-dropdown"
-          onClick={() => setShowAeroPay(!showAeroPay)}>
-          <span>
-            <Kite /> 1000{" "}
-          </span>
-
-          <ArrowPay />
-        </Button>
-        {showAeroPay && (
-          <div className="aero-pay-container">
-            <AeroPayModule />
+      <Container>
+        <div className="menu-container">
+          <div className="mobile">
+            <AerolabIconMobile />
           </div>
-        )}
-      </div>
+          <div className="desktop">
+            <AerolabLogo />
+          </div>
+          <div ref={aeroPayRef}>
+            <Button
+              variant="aero-pay-dropdown"
+              onClick={() => setShowAeroPay(!showAeroPay)}>
+              <span>
+                <Kite /> 1000{" "}
+              </span>
+
+              <ArrowPay />
+            </Button>
+            {showAeroPay && (
+              <div className="aero-pay-container">
+                <AeroPayModule />
+              </div>
+            )}
+          </div>
+        </div>
+      </Container>
     </StyledMenu>
   );
 };

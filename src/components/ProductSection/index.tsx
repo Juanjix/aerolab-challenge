@@ -77,6 +77,7 @@ const StyledProductSection = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
+      display: none;
 
       .arrow {
         cursor: pointer;
@@ -118,7 +119,7 @@ const StyledProductSection = styled.section`
 
   .products-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     margin-top: 70px;
   }
