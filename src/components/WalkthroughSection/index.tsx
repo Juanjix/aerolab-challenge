@@ -33,7 +33,7 @@ const StyledWalkthrough = styled.section`
     display: block;
 
     /* Oculta en dispositivos de escritorio */
-    @media (min-width: 920px) {
+    @media (min-width: 1320px) {
       display: none;
     }
 

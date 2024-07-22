@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 import Kite from "../../../public/icons/kite-icon";
 
 // URL del SVG
-const svgUrl = "/icons/background-wave.svg";
+const svgUrl = "/icons/wave-pattern-card.svg";
 
 const StyledAeroPayModule = styled.div`
   max-width: 312px;
@@ -27,7 +27,9 @@ const StyledAeroPayModule = styled.div`
   .aero-pay-card-container {
     border-top: 1px solid grey;
     padding: 32px 20px;
+
     .aero-pay-card {
+      background: repeat center url(${svgUrl});
       max-width: 264px;
       background-color: ${({ theme }) => theme.colors.neutral__900};
       border-radius: 18px;

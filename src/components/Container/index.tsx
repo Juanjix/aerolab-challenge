@@ -5,15 +5,14 @@ import styled from "styled-components";
 
 const Container = styled.div`
   max-width: 1320px;
-  // width: 100%;
-  padding: 0 28px;
+  padding: 0 20px;
   margin: 0 auto;
 
-  @media (max-width: 440px) {
+  @media (min-width: 440px) {
     padding: 0 48px;
   }
 
-  @media (max-width: 920px) {
+  @media (min-width: 1320px) {
     padding: 0;
   }
 `;

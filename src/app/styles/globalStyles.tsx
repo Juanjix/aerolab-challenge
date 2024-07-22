@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 80%;
     letter-spacing: 0;
 
-    @media screen (min-width: 920px){
+    @media (min-width: 1320px){
       font-size: 200px;
       margin: 0;
     }
