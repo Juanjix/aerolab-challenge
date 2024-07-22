@@ -85,6 +85,7 @@ const WalkthroughCard: React.FC<{ WalkthroughProps: WalkthroughProps }> = ({
             }}
             fill
             sizes="(min-width: 808px) 50vw, 100vw"
+            priority
           />
         </div>
         <div className="text-container">

@@ -9,8 +9,6 @@ export const users = pgTable("users", {
   name: text("name"),
   email: text("email").unique(),
   points: integer("points").default(2000),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 // Define the Product table

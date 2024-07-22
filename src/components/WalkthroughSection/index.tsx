@@ -7,6 +7,8 @@ import Step1 from "@/../public/images/Saly-1.png";
 import Step2 from "@/../public/images/Saly-2.png";
 import Step3 from "@/../public/images/Saly-3.png";
 
+// Icons
+
 // Ilustracion
 import Illustration from "@/../public/images/hero-desktop.png";
 
@@ -20,7 +22,11 @@ const StyledWalkthrough = styled.section`
   z-index: 9999;
 
   @media (min-width: 1024px) {
-    padding: 150px 0 10px 0;
+    padding: 0px 0 10px 0;
+  }
+
+  @media (min-width: 1290px) {
+    padding: 150px 0 -190px 0;
   }
 
   .cards-container {
@@ -34,6 +40,10 @@ const StyledWalkthrough = styled.section`
       flex-direction: row;
       justify-content: space-evenly;
       flex-wrap: wrap;
+    }
+
+    .card {
+      margin-top: -90px;
     }
 
     .illustration-container {
@@ -92,13 +102,16 @@ const WalkthroughSection = () => {
             <Image
               src={Illustration}
               alt={""}
-              layout="responsive"
-              width={780}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+              priority
               className="illustration"
             />
           </div>
           {WalkthrougData.map((data, key) => (
-            <div key={key}>
+            <div key={key} className="card">
               <WalkthroughCard
                 WalkthroughProps={{
                   imagen: data.imagen,
