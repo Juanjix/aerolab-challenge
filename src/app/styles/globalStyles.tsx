@@ -69,7 +69,6 @@ const GlobalStyle = createGlobalStyle`
       letter-spacing: 24;
     }
 
-
     &.small{
       font-size: 12px;
       font-weight: 600;
@@ -97,8 +96,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .uppercase{
-      text-transform: uppercase;
+    text-transform: uppercase;
+  }
+
+  span{
+    &.gradiant-titulo{
+      color: #1667d9;
     }
+  }
 
 `;
 

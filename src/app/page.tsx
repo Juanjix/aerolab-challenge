@@ -38,9 +38,7 @@ export default function Home() {
     <main>
       <Hero />
       <WalkthroughSection />
-      {loading && <p>Loading ... </p>}
       {error ? <p>error</p> : ""}
-
       <ProductSection data={products} loading={loading} />
     </main>
   );

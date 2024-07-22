@@ -21,7 +21,7 @@ const StyledWalkthrough = styled.section`
 
   .illustration-container {
     position: absolute;
-    top: -120px;
+    top: -90px;
     left: 50%;
     transform: translateX(-50%);
     right: 50%;
@@ -81,16 +81,16 @@ const WalkthroughSection = () => {
   return (
     <StyledWalkthrough>
       <Container>
-        <div className="illustration-container">
-          <Image
-            src={Illustration}
-            alt={""}
-            layout="responsive"
-            width={780}
-            className="illustration"
-          />
-        </div>
         <div className="cards-container">
+          <div className="illustration-container">
+            <Image
+              src={Illustration}
+              alt={""}
+              layout="responsive"
+              width={780}
+              className="illustration"
+            />
+          </div>
           {WalkthrougData.map((data, key) => (
             <div key={key}>
               <WalkthroughCard

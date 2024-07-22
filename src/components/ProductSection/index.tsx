@@ -122,6 +122,10 @@ const StyledProductSection = styled.section`
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 70px;
+
+    @media (min-width: 620px) {
+      justify-content: space-between;
+    }
   }
 `;
 
@@ -193,9 +197,6 @@ const ProductSection: React.FC<ProductSectionProps> = ({ data, loading }) => {
           </div>
         </div>
         <div className="products-container">
-          {/* {data.map((product, key) => (
-            <ProductCard key={key} product={product} />
-          ))} */}
           {loading
             ? Array.from({ length: 9 }).map((_, index) => (
                 <ProductCardSkeleton key={index} />
