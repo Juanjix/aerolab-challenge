@@ -339,9 +339,9 @@
   integrity sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==
 
 "@fontsource/montserrat@^5.0.19":
-  version "5.0.18"
-  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-5.0.18.tgz#eecb91b0f0062787a0eee5622988ed21f2899a90"
-  integrity sha512-85JBs2rCdFK/VBdSb401e2lXk5gynVo2zi3Rh2Guem4WNtT2q52+V90o3KzjmajY3TPJvCZA/kI7R05ev7148g==
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-5.0.7.tgz#7ad531afe95333d7d01fed50c704bcd6d5e5b205"
+  integrity sha512-C8IvPQGiRQz3bdQWPIRXOjFwv6BrpxyZszjwfYXlVQ1v1p6wu50htKcTMZR/MGDoug+9/6sJhz5ZxGP8f7guSw==
 
 "@humanwhocodes/config-array@^0.11.14":
   version "0.11.14"
