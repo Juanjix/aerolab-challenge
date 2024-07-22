@@ -10,10 +10,10 @@ import Kite from "../../../public/icons/kite-icon";
 const svgUrl = "/icons/wave-pattern-card.svg";
 
 const StyledAeroPayModule = styled.div`
-  max-width: 312px;
+  width: 312px;
   border-radius: 18px;
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-  padding: 32px 0px;
+  // padding: 32px 0px;
   background: white;
 
   .titulo {
@@ -26,7 +26,8 @@ const StyledAeroPayModule = styled.div`
 
   .aero-pay-card-container {
     border-top: 1px solid grey;
-    padding: 32px 20px;
+    padding: 32px 45px;
+    padding: 20px;
 
     .aero-pay-card {
       background: repeat center url(${svgUrl});
@@ -66,12 +67,12 @@ const AeroPayModule = () => {
       <div className="aero-pay-card-container">
         <div className="aero-pay-card">
           <div className="brand">
-            <p>Aerocard</p>
+            <p className="white">Aerocard</p>
             <Kite />
           </div>
           <div className="brand">
-            <p>John Kite</p>
-            <p>07/23</p>
+            <p className="white">John Kite</p>
+            <p className="white">07/23</p>
           </div>
         </div>
         <div className="add-section">

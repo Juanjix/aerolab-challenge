@@ -22,11 +22,7 @@ const StyledWalkthrough = styled.section`
   z-index: 9999;
 
   @media (min-width: 1024px) {
-    padding: 0px 0 10px 0;
-  }
-
-  @media (min-width: 1290px) {
-    padding: 150px 0 -190px 0;
+    padding: 150px 0 10px 0;
   }
 
   .cards-container {
@@ -43,7 +39,9 @@ const StyledWalkthrough = styled.section`
     }
 
     .card {
-      margin-top: -90px;
+      @media (min-width: 1320px) {
+        margin-top: -90px;
+      }
     }
 
     .illustration-container {
@@ -108,6 +106,7 @@ const WalkthroughSection = () => {
               }}
               priority
               className="illustration"
+              quality={100}
             />
           </div>
           {WalkthrougData.map((data, key) => (

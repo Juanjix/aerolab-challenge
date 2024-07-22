@@ -57,7 +57,7 @@ export const redeemHistory = pgTable("redeem_history", {
 
 // Define the types for TypeScript
 export type User = InferSelectModel<typeof users>;
-// export type NewUser = InferInsertModel<typeof users, "insert">;
+// export type NewUser = InferInsertModel<typeof users, insert>;
 
 // export type Products = InferSelectModel<typeof Product>;
 // export type NewProduct = InferInsertModel<typeof Product, "insert">;

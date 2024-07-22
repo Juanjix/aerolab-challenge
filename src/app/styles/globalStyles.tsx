@@ -78,6 +78,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 14px;
       }
     }
+
+    &.white{
+      color: white;
+    }
   }
 
   a {

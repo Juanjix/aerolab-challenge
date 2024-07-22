@@ -44,9 +44,9 @@ const StyledMenu = styled.menu`
       display: flex;
       align-items: center;
       margin-right: 12px;
-      svg {
-        margin-right: 5px;
-      }
+      // svg {
+      //   margin-right: 5px;
+      // }
     }
 
     .aero-pay-container {

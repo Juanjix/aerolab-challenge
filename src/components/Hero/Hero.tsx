@@ -25,6 +25,7 @@ const svgUrl = "/icons/background-wave.svg";
 const StyledHero = styled.section`
   background: repeat center url(${svgUrl});
   height: 100vh;
+
   .hero-container {
     text-align: center;
 
@@ -61,6 +62,7 @@ const StyledHero = styled.section`
 
       button {
         max-width: 303px;
+        margin-top: 20px;
       }
     }
 
@@ -73,48 +75,49 @@ const StyledHero = styled.section`
     }
 
     .skeleton-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-
-    @media (min-width: 1280px) {
-      flex-direction: row;
-      justify-content: space-between;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-    }
-
-    .skeleton-text-container {
       width: 100%;
-      max-width: 602px;
-      margin: 0 auto;
 
       @media (min-width: 1280px) {
-        width: 602px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
       }
-    }
 
-    .skeleton-text {
-      margin: 10px 0;
-    }
+      .skeleton-text-container {
+        width: 100%;
+        max-width: 602px;
+        margin: 0 auto;
 
-    .skeleton-button {
-      width: 100%;
-      max-width: 303px;
-      margin-top: 20px;
-    }
+        @media (min-width: 1280px) {
+          width: 602px;
+        }
+      }
 
-    .skeleton-image {
-      width: 100%;
-      height: 0;
-      padding-top: 56.25%; /* Aspect ratio 16:9 */
-      display: none;
+      .skeleton-text {
+        margin: 10px 0;
+      }
 
-      @media (min-width: 1280px) {
-        display: block;
-        width: 629px;
-        height: 10px;
-        margin-top: 0;
+      .skeleton-button {
+        width: 100%;
+        max-width: 303px;
+        margin-top: 20px;
+      }
+
+      .skeleton-image {
+        width: 100%;
+        height: 0;
+        padding-top: 56.25%; /* Aspect ratio 16:9 */
+        display: none;
+
+        @media (min-width: 1280px) {
+          display: block;
+          width: 629px;
+          height: 10px;
+          margin-top: 0;
+        }
       }
     }
   }
