@@ -38,7 +38,7 @@ const StyledWalkthrough = styled.section`
 
     .illustration-container {
       position: absolute;
-      top: -70px;
+      top: -105px;
       left: 50%;
       transform: translateX(-50%);
       right: 50%;
