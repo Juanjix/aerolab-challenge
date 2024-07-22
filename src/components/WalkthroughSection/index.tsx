@@ -19,42 +19,47 @@ const StyledWalkthrough = styled.section`
   position: relative;
   z-index: 9999;
 
-  .illustration-container {
-    position: absolute;
-    top: -90px;
-    left: 50%;
-    transform: translateX(-50%);
-    right: 50%;
-    width: 100%;
-    max-width: 580px;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    display: block;
-
-    @media (min-width) {
-      top: -60px;
-    }
-    @media (min-width: 1320px) {
-      display: none;
-    }
-
-    .illustration {
-      width: 580px;
-      height: auto; /* Mantiene la proporción */
-    }
+  @media (min-width: 1024px) {
+    padding: 150px 0 10px 0;
   }
 
   .cards-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    z-index: 1;
 
     @media (min-width: 920px) {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
       flex-wrap: wrap;
+    }
+
+    .illustration-container {
+      position: absolute;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      right: 50%;
+      width: 100%;
+      overflow: hidden;
+      max-width: 410px;
+      display: block;
+
+      @media (min-width: 1024px) {
+        max-width: 580px;
+        top: -175px;
+      }
+
+      @media (min-width: 1260px) {
+        display: none;
+      }
+
+      .illustration {
+        width: 580px;
+        height: auto; /* Mantiene la proporción */
+      }
     }
   }
 `;

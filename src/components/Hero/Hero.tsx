@@ -24,6 +24,7 @@ const svgUrl = "/icons/background-wave.svg";
 
 const StyledHero = styled.section`
   background: repeat center url(${svgUrl});
+  height: 100vh;
   .hero-container {
     text-align: center;
 

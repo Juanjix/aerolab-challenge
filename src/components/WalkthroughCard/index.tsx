@@ -11,6 +11,8 @@ const StyledWalkCard = styled.div`
   margin: 0 auto;
   padding: 12px;
   background-color: ${({ theme }) => theme.colors.neutral__100};
+  position: relative;
+  margin-bottom: 30px;
 
   .inside-card {
     border: 1px solid ${({ theme }) => theme.colors.neutral__300};
@@ -60,14 +62,12 @@ const StyledWalkCard = styled.div`
   }
 `;
 
-// Interfaz para las propiedades
 interface WalkthroughProps {
   imagen: StaticImageData;
   titulo: string;
   sentence: string;
 }
 
-// Componente funcional
 const WalkthroughCard: React.FC<{ WalkthroughProps: WalkthroughProps }> = ({
   WalkthroughProps,
 }) => {
