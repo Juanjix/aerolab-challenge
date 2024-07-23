@@ -6,10 +6,12 @@ import styled, { css } from "styled-components";
 interface ButtonProps {
   variant?:
     | "cta"
+    | "cta-processing"
     | "landing-cta"
     | "sort-selector"
     | "aero-pay-dropdown"
-    | "number-selector";
+    | "number-selector"
+    | "number-selector-active";
   children: React.ReactNode;
   onClick: () => void;
 }
@@ -38,10 +40,14 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 
   ${({ $variant }) => $variant === "cta" && ctaStyles}
+  ${({ $variant }) => $variant === "cta-processing" && ctaProcessing}
   ${({ $variant }) => $variant === "landing-cta" && landingCtaStyle}
   ${({ $variant }) => $variant === "aero-pay-dropdown" && aeroPayStyles}
   ${({ $variant }) => $variant === "sort-selector" && sortSelectorStyles}
   ${({ $variant }) => $variant === "number-selector" && numberSelectorStyles}
+  ${({ $variant }) => $variant === "number-selector" && numberSelectorStyles}
+  ${({ $variant }) =>
+    $variant === "number-selector-active" && numberSelectorActive}
 `;
 
 const GradientText = styled.span`
@@ -102,6 +108,16 @@ const ctaStyles = css`
   }
 `;
 
+const ctaProcessing = css`
+  background: ${({ theme }) => theme.colors.specialSection};
+  color: white;
+  border: none;
+  padding: 15px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const landingCtaStyle = css`
   background: ${({ theme }) => theme.colors.brand};
   color: white;
@@ -117,9 +133,26 @@ const landingCtaStyle = css`
   }
 `;
 
+const aeroPayStyles = css`
+  background-clip: text;
+  border: 1px solid ${({ theme }) => theme.colors.neutral__500};
+  padding: 10px 32px;
+
+  svg {
+    transition: transform 0.3s;
+  }
+`;
+
 const sortSelectorStyles = css`
   background: ${({ theme }) => theme.colors.brand};
   padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    margin-right: 8px;
+  }
 
   &:hover {
     background: ${({ theme }) => theme.colors.neutral__300};
@@ -130,46 +163,24 @@ const sortSelectorStyles = css`
   }
 `;
 
-const aeroPayStyles = css`
-  background: ${({ theme }) => theme.colors.brand};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.neutral__500};
-  padding: 10px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background: white;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent; /* Fallback for browsers that do not support these properties */
-  }
-
-  svg {
-    transition: transform 0.3s;
-  }
-`;
-
 const numberSelectorStyles = css`
   background: ${({ theme }) => theme.colors.neutral__300};
-  color: white;
   border: 0;
   color: white;
   padding: 12px 18px;
-  &:hover{
-    background: ${({ theme }) => theme.colors.brandHover};
-  }
 
   svg {
     transition: transform 0.3s;
   }
 
-  &:active {
-  
+  &.active {
     background: ${({ theme }) => theme.colors.brand};
+  }
+`;
 
+const numberSelectorActive = css`
+  background: ${({ theme }) => theme.colors.brand};
+  border: 0;
+  color: white;
+  padding: 12px 18px;
 `;

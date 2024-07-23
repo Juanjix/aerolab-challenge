@@ -1,16 +1,15 @@
-// Theme
-
 // Components
 import Image from "next/image";
 import styled from "styled-components";
 import Lazy from "../../../public/images/lazy.png";
 import Button from "../Button/Button";
 
-// Types
-
 import Kite from "@/../public/icons/kite-icon";
 import { Product } from "@/types";
 import { theme } from "@/app/styles/themes";
+import { getUser, reedemProduct } from "@/app/actions";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
+import { boolean } from "drizzle-orm/mysql-core";
 
 const StyledProductCard = styled.div`
   margin-bottom: 40px;
@@ -45,9 +44,30 @@ const StyledProductCard = styled.div`
 
 interface ProductCardProps {
   product: Product;
+  points: number;
+  setPoints: (points: number) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  points,
+  setPoints,
+}) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = async (productId: string) => {
+    setLoading(true);
+    const user = await getUser();
+    if (points >= product.cost) {
+      setLoading(false);
+      await reedemProduct(productId);
+
+      setPoints(user.points - product.cost);
+    }
+
+    return;
+  };
+
   return (
     <StyledProductCard>
       <div>
@@ -74,13 +94,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </div>
           </div>
         </div>
-        <Button
-          variant="cta"
-          onClick={function (): void {
-            throw new Error("Function not implemented.");
-          }}>
-          Reedem for <Kite /> {product.cost}
-        </Button>
+
+        {loading ? (
+          <Button
+            variant="cta-processing"
+            onClick={function (): void {
+              throw new Error("Function not implemented.");
+            }}>
+            Proccessing ...{" "}
+          </Button>
+        ) : (
+          <Button variant="cta" onClick={() => handleClick(product._id)}>
+            Reedem for <Kite /> {product.cost}
+          </Button>
+        )}
       </div>
     </StyledProductCard>
   );

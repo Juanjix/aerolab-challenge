@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 // Accion base
 async function fetchFromAPI(
   url: string,
@@ -22,11 +24,29 @@ async function fetchFromAPI(
   return data;
 }
 
-// Accion para traer el usuario
-export async function getUser() {
-  const data = await fetchFromAPI("/user/me");
+// Accion base
+export async function getUser(p0?: string, body?: { amount: number }) {
+  const res = await fetch(`${process.env.API_BASE}/user/me`, {
+    headers: {
+      Authorization: `Bearer ${process.env.API_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch from API");
+  }
+
+  const data = await res.json();
+
   return data;
 }
+
+// // Accion para traer el usuario
+// export async function getUser() {
+//   const data = await fetchFromAPI("/user/me");
+//   return data;
+// }
 
 // Accion para traer los productos
 export async function getProducts() {
@@ -40,9 +60,28 @@ export async function addPoints(amount: number) {
     throw new Error("Invalid amount. Only 1000, 5000, or 7500 are allowed.");
   }
 
-  const body = { amount };
+  const data = await fetch(process.env.API_BASE + "/user/points", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.API_TOKEN}`,
+    },
+    body: JSON.stringify({ amount }),
+  });
 
-  const data = await fetchFromAPI("/points", "POST", body);
+  return data;
+}
+
+export async function reedemProduct(productId: string) {
+  const data = await fetch(process.env.API_BASE + "/redeem", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.API_TOKEN}`,
+    },
+    body: JSON.stringify({ productId }),
+  });
+
   return data;
 }
 

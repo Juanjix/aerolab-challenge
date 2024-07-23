@@ -8,16 +8,34 @@ import Hero from "@/components/Hero/Hero";
 import ProductSection from "@/components/ProductSection";
 import WalkthroughSection from "@/components/WalkthroughSection";
 
+// Provider
+// import PointsContext from "@/app/PointsContext";
+
 // Acciones
-import { getProducts } from "./actions";
+import { getProducts, getUser } from "./actions";
 
 //Types
 import { Product } from "@/types";
+import Menu from "@/components/Menu/Menu";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState();
+  const [points, setPoints] = useState(0);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const data = await getUser();
+
+      console.log(data);
+      setUser(data);
+      setPoints(data.points);
+    };
+
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     async function loadProducts() {
@@ -36,10 +54,16 @@ export default function Home() {
 
   return (
     <main>
+      <Menu points={points} user={user!} setPoints={setPoints} />
       <Hero />
       <WalkthroughSection />
       {error ? <p>error</p> : ""}
-      <ProductSection data={products} loading={loading} />
+      <ProductSection
+        data={products}
+        loading={loading}
+        points={points}
+        setPoints={setPoints}
+      />
     </main>
   );
 }

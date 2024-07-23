@@ -1,7 +1,10 @@
 "use client";
 // Style
 import styled from "styled-components";
-import { useState, useEffect, useRef } from "react";
+
+// Actions
+import { getUser, addPoints } from "@/app/actions";
+import { User } from "@/types";
 
 // Icons
 import { AerolabIconMobile } from "../../../public/icons/aerolabIconMobile";
@@ -13,6 +16,7 @@ import Button from "../Button/Button";
 // Module
 import AeroPayModule from "../AeroPayModule";
 import Container from "../Container";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const StyledMenu = styled.menu`
   .menu-container {
@@ -43,10 +47,19 @@ const StyledMenu = styled.menu`
     span {
       display: flex;
       align-items: center;
-      margin-right: 12px;
-      // svg {
-      //   margin-right: 5px;
-      // }
+      margin-left: 20px;
+    }
+
+    .translate {
+      span {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    svg {
+      margin-right: 10px;
     }
 
     .aero-pay-container {
@@ -58,29 +71,18 @@ const StyledMenu = styled.menu`
   }
 `;
 
-const Menu: React.FC = () => {
-  const [showAeroPay, setShowAeroPay] = useState<boolean>(false);
-  const aeroPayRef = useRef<HTMLDivElement>(null);
+const Menu = (props: {
+  points: number;
+  user: User;
+  setPoints: Dispatch<SetStateAction<number>>;
+}) => {
+  const { points, user, setPoints } = props;
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      aeroPayRef.current &&
-      !aeroPayRef.current.contains(event.target as Node)
-    ) {
-      setShowAeroPay(false);
-    }
+  const [show, setShow] = useState(false);
+
+  const handleModal = () => {
+    setShow(!show);
   };
-
-  useEffect(() => {
-    if (showAeroPay) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showAeroPay]);
 
   return (
     <StyledMenu>
@@ -92,19 +94,32 @@ const Menu: React.FC = () => {
           <div className="desktop">
             <AerolabLogo />
           </div>
-          <div ref={aeroPayRef}>
-            <Button
-              variant="aero-pay-dropdown"
-              onClick={() => setShowAeroPay(!showAeroPay)}>
-              <span>
-                <Kite /> 1000{" "}
-              </span>
-
-              <ArrowPay />
+          <div>
+            <Button variant="aero-pay-dropdown" onClick={() => handleModal()}>
+              <Kite /> {points}
+              {!show ? (
+                <div>
+                  <span>
+                    <ArrowPay />
+                  </span>
+                </div>
+              ) : (
+                <div className="translate">
+                  <span>
+                    <ArrowPay />
+                  </span>
+                </div>
+              )}
             </Button>
-            {showAeroPay && (
+
+            {show && (
               <div className="aero-pay-container">
-                <AeroPayModule />
+                <AeroPayModule
+                  name={user?.name}
+                  setPoints={setPoints}
+                  points={points || 0}
+                  onClick={() => handleModal()}
+                />
               </div>
             )}
           </div>

@@ -29,7 +29,6 @@ export default function RootLayout({
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <StyledComponentsRegistry>
-            <Menu />
             {children}
             <Footer />
           </StyledComponentsRegistry>

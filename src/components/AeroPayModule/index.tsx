@@ -1,10 +1,19 @@
+// "use client";
+
+import React, { useEffect, useState } from "react";
+
 import styled from "styled-components";
 
-// Icons
+// Actions
+import { addPoints } from "@/app/actions";
 
 // Components
 import Button from "../Button/Button";
 import Kite from "../../../public/icons/kite-icon";
+import Kite2 from "../../../public/icons/aerocard-icon-kite";
+
+// Icons
+// import Arrow from "@/../public/icons/icon-close";
 
 // URL del SVG
 const svgUrl = "/icons/wave-pattern-card.svg";
@@ -19,8 +28,6 @@ const StyledAeroPayModule = styled.div`
   .titulo {
     display: flex;
     justify-content: space-between;
-
-    margin-bottom: 30px;
     padding: 20px;
   }
 
@@ -57,53 +64,65 @@ const StyledAeroPayModule = styled.div`
   }
 `;
 
-const AeroPayModule = () => {
+const AeroPayModule = (props: {
+  name: any;
+  setPoints: any;
+  points: number;
+  onClick: () => void;
+}) => {
+  const [amount, setAmount] = useState(0);
+
+  const { name, setPoints, points } = props;
+
+  const handleClick = async (amount: number) => {
+    const total = points + amount;
+    setPoints(total);
+    await addPoints(amount);
+  };
+
   return (
     <StyledAeroPayModule>
       <div className="titulo">
-        <p>Pay Balance</p>
-        <button onClick={() => console.log("Close button clicked")}>×</button>
+        <p className="black">Pay Balance</p>
+        <button onClick={onclick}></button>
       </div>
       <div className="aero-pay-card-container">
         <div className="aero-pay-card">
           <div className="brand">
             <p className="white">Aerocard</p>
-            <Kite />
+            <Kite2 />
           </div>
           <div className="brand">
-            <p className="white">John Kite</p>
+            <p className="white">{name}</p>
             <p className="white">07/23</p>
           </div>
         </div>
         <div className="add-section">
           <Button
-            variant="number-selector"
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}>
+            variant={
+              amount === 1000 ? "number-selector-active" : "number-selector"
+            }
+            onClick={() => setAmount(1000)}>
             1000
           </Button>
           <Button
-            variant="number-selector"
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}>
+            variant={
+              amount === 5000 ? "number-selector-active" : "number-selector"
+            }
+            onClick={() => setAmount(5000)}>
             5000
           </Button>
           <Button
-            variant="number-selector"
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}>
+            variant={
+              amount === 7500 ? "number-selector-active" : "number-selector"
+            }
+            onClick={() => setAmount(7500)}>
             7500
           </Button>
         </div>
         <div className="send">
-          <Button
-            variant="cta"
-            onClick={function (): void {
-              throw new Error("Function not implemented.");
-            }}>
+          <Button onClick={() => handleClick(amount)} variant="sort-selector">
+            <Kite />
             Add Points
           </Button>
         </div>

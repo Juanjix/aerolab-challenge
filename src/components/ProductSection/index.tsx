@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import styled from "styled-components";
 
 // Icons
@@ -14,6 +14,8 @@ import ProductCardSkeleton from "../ProductCardSkeleton";
 interface ProductSectionProps {
   data: Product[];
   loading: boolean;
+  points: number;
+  setPoints: Dispatch<SetStateAction<number>>;
 }
 
 // Styled
@@ -129,7 +131,12 @@ const StyledProductSection = styled.section`
   }
 `;
 
-const ProductSection: React.FC<ProductSectionProps> = ({ data, loading }) => {
+const ProductSection: React.FC<ProductSectionProps> = ({
+  data,
+  loading,
+  points,
+  setPoints,
+}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleDropdownClick = () => {
@@ -202,7 +209,12 @@ const ProductSection: React.FC<ProductSectionProps> = ({ data, loading }) => {
                 <ProductCardSkeleton key={index} />
               ))
             : data.map((product, key) => (
-                <ProductCard key={key} product={product} />
+                <ProductCard
+                  key={key}
+                  product={product}
+                  points={points}
+                  setPoints={setPoints}
+                />
               ))}
         </div>
       </Container>

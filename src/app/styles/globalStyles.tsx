@@ -82,6 +82,10 @@ const GlobalStyle = createGlobalStyle`
     &.white{
       color: white;
     }
+
+    &.black{
+      color: ${({ theme }) => theme.colors.neutral__900};
+    }
   }
 
   a {
