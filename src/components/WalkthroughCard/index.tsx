@@ -6,6 +6,8 @@ import { StaticImageData } from "next/image";
 // Definición de los estilos
 const StyledWalkCard = styled.div`
   max-width: 320px;
+  width: 100%;
+  height: auto;
   border-radius: 18px;
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
   margin: 0 auto;
@@ -13,6 +15,15 @@ const StyledWalkCard = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral__100};
   position: relative;
   margin-bottom: 30px;
+
+  @media (min-width: 1320px) {
+    max-width: 410px;
+    width: 100%;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 532px;
+  }
 
   .inside-card {
     border: 1px solid ${({ theme }) => theme.colors.neutral__300};

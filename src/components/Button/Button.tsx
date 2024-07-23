@@ -144,7 +144,7 @@ const aeroPayStyles = css`
 `;
 
 const sortSelectorStyles = css`
-  background: ${({ theme }) => theme.colors.brand};
+  background: ${({ theme }) => theme.colors.neutral__200};
   padding: 8px 16px;
   display: flex;
   align-items: center;
