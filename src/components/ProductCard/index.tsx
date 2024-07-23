@@ -8,15 +8,14 @@ import Kite from "@/../public/icons/kite-icon";
 import { Product } from "@/types";
 import { theme } from "@/app/styles/themes";
 import { getUser, reedemProduct } from "@/app/actions";
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { boolean } from "drizzle-orm/mysql-core";
+import { useState } from "react";
 
 // Componentes
-
 import NotificationToast from "../NotificationToast";
 
 const StyledProductCard = styled.div`
   margin-bottom: 40px;
+  position: relative;
   .product-card {
     border: 1px solid ${theme.colors.neutral__300};
     border-radius: 18px;
@@ -61,15 +60,26 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   // const handleClick = async (productId: string) => {
   //   setLoading(true);
-  //   const user = await getUser();
-  //   if (points >= product.cost) {
+  //   try {
+  //     const user = await getUser();
+  //     if (points >= product.cost) {
+  //       await reedemProduct(productId);
+  //       setPoints(user.points - product.cost);
+  //     } else {
+  //       console.log("Not enough points to redeem the product");
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to redeem product:", error);
+  //   } finally {
   //     setLoading(false);
-  //     await reedemProduct(productId);
-  //     setPoints(user.points - product.cost);
   //   }
-
-  //   return;
   // };
+
+  const [notification, setNotification] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
   const handleClick = async (productId: string) => {
     setLoading(true);
     try {
@@ -77,14 +87,25 @@ const ProductCard: React.FC<ProductCardProps> = ({
       if (points >= product.cost) {
         await reedemProduct(productId);
         setPoints(user.points - product.cost);
+        setNotification({
+          type: "success",
+          message: `Successfully redeemed ${product.name}!`,
+        });
       } else {
-        console.log("Not enough points to redeem the product");
+        setNotification({
+          type: "error",
+          message: "Not enough points to redeem the product",
+        });
       }
     } catch (error) {
-      console.error("Failed to redeem product:", error);
+      setNotification({
+        type: "error",
+        message: "Failed to redeem product. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
+    setTimeout(() => setNotification({ type: null, message: "" }), 5000); // Oculta el toast después de 5 segundos
   };
 
   return (
@@ -121,6 +142,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
             message={"There was a problem white the transaccion"}
           />
         )} */}
+        {notification.type && (
+          <NotificationToast
+            type={notification.type}
+            message={notification.message}
+          />
+        )}
 
         {loading ? (
           <Button

@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.primary}
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.neutral__600};
+
   }
 
   h1, h2, h3, h4, h5, h6, p {
