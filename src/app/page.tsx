@@ -5,11 +5,8 @@ import { useState, useEffect } from "react";
 
 // Secciones
 import Hero from "@/components/Hero/Hero";
-import ProductSection from "@/components/ProductSection";
+import ProductSection from "@/components/ProductsSection";
 import WalkthroughSection from "@/components/WalkthroughSection";
-
-// Provider
-// import PointsContext from "@/app/PointsContext";
 
 // Acciones
 import { getProducts, getUser } from "./actions";
@@ -57,7 +54,6 @@ export default function Home() {
       <Menu points={points} user={user!} setPoints={setPoints} />
       <Hero />
       <WalkthroughSection />
-      {error ? <p>error</p> : ""}
       <ProductSection
         data={products}
         loading={loading}

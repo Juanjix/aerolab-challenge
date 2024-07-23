@@ -185,7 +185,9 @@ const Hero: React.FC = () => {
                 </p>
                 <div className="cta-button">
                   <Button variant="landing-cta" onClick={handleButtonClick}>
-                    View all Products <Arrow />
+                    <a href="#products-section">
+                      View all Products <Arrow />
+                    </a>
                   </Button>
                 </div>
               </div>

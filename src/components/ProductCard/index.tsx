@@ -11,6 +11,10 @@ import { getUser, reedemProduct } from "@/app/actions";
 import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import { boolean } from "drizzle-orm/mysql-core";
 
+// Componentes
+
+import NotificationToast from "../NotificationToast";
+
 const StyledProductCard = styled.div`
   margin-bottom: 40px;
   .product-card {
@@ -55,17 +59,32 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   const [loading, setLoading] = useState(false);
 
+  // const handleClick = async (productId: string) => {
+  //   setLoading(true);
+  //   const user = await getUser();
+  //   if (points >= product.cost) {
+  //     setLoading(false);
+  //     await reedemProduct(productId);
+  //     setPoints(user.points - product.cost);
+  //   }
+
+  //   return;
+  // };
   const handleClick = async (productId: string) => {
     setLoading(true);
-    const user = await getUser();
-    if (points >= product.cost) {
+    try {
+      const user = await getUser();
+      if (points >= product.cost) {
+        await reedemProduct(productId);
+        setPoints(user.points - product.cost);
+      } else {
+        console.log("Not enough points to redeem the product");
+      }
+    } catch (error) {
+      console.error("Failed to redeem product:", error);
+    } finally {
       setLoading(false);
-      await reedemProduct(productId);
-
-      setPoints(user.points - product.cost);
     }
-
-    return;
   };
 
   return (
@@ -94,6 +113,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </div>
           </div>
         </div>
+        {/* {success === true ? (
+          <NotificationToast type={"success"} message={"awdawda"} />
+        ) : (
+          <NotificationToast
+            type={"error"}
+            message={"There was a problem white the transaccion"}
+          />
+        )} */}
 
         {loading ? (
           <Button

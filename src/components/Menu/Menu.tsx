@@ -18,9 +18,11 @@ import AeroPayModule from "../AeroPayModule";
 import Container from "../Container";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
+import Skeleton from "../SkeletonBox";
+
 const StyledMenu = styled.menu`
   .menu-container {
-    padding: 60px 20px;
+    padding: 60px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,12 +79,40 @@ const Menu = (props: {
   setPoints: Dispatch<SetStateAction<number>>;
 }) => {
   const { points, user, setPoints } = props;
-
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simular una carga de datos
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleModal = () => {
     setShow(!show);
   };
+
+  if (loading) {
+    return (
+      <StyledMenu>
+        <Container>
+          <div className="menu-container">
+            <div className="mobile">
+              <Skeleton width="50px" height="50px" />
+            </div>
+            <div className="desktop">
+              <Skeleton width="120px" height="50px" />
+            </div>
+            <div>
+              <Skeleton width="150px" height="40px" />
+            </div>
+          </div>
+        </Container>
+      </StyledMenu>
+    );
+  }
 
   return (
     <StyledMenu>
@@ -118,7 +148,7 @@ const Menu = (props: {
                   name={user?.name}
                   setPoints={setPoints}
                   points={points || 0}
-                  onClick={() => handleModal()}
+                  onClose={handleModal}
                 />
               </div>
             )}

@@ -1,11 +1,11 @@
 // "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 
 // Actions
-import { addPoints } from "@/app/actions";
+import { addPoints, getUser } from "@/app/actions";
 
 // Components
 import Button from "../Button/Button";
@@ -68,7 +68,7 @@ const AeroPayModule = (props: {
   name: any;
   setPoints: any;
   points: number;
-  onClick: () => void;
+  onClose: () => void;
 }) => {
   const [amount, setAmount] = useState(0);
 
@@ -80,11 +80,24 @@ const AeroPayModule = (props: {
     await addPoints(amount);
   };
 
+  // const handleClick = async (amount: number) => {
+  //   setLoading(true);
+  //   try {
+  //     const user = await getUser();
+  //     await addPoints(amount);
+  //     setPoints(user.points + amount);
+  //   } catch (error) {
+  //     console.error("Failed to add points:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   return (
     <StyledAeroPayModule>
       <div className="titulo">
         <p className="black">Pay Balance</p>
-        <button onClick={onclick}></button>
+        {/* <Arrow /> */}
       </div>
       <div className="aero-pay-card-container">
         <div className="aero-pay-card">

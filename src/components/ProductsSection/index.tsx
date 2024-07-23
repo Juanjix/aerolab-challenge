@@ -20,54 +20,64 @@ interface ProductSectionProps {
 
 // Styled
 const StyledProductSection = styled.section`
-  .gradiant-titulo {
-    color: #1667d9;
-  }
-
-  .filter-section {
+  .filter-container {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
 
-    .dropdown {
-      button {
-        border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-        border-radius: 18px;
-        padding: 12px 16px;
-        cursor: pointer;
-        background-color: white;
-        transition: background-color 0.3s;
+    .filter {
+      // display: flex;
 
-        &:hover {
-          background-color: ${({ theme }) => theme.colors.neutral__200};
-        }
-      }
+      .dropdown {
+        margin-right: 100px;
 
-      .dropdown-products {
-        display: none;
-        position: absolute;
-        max-width: 256px;
-        background-color: ${({ theme }) => theme.colors.neutral__100};
-        border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-        border-radius: 18px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        width: 100%;
-        max-height: 200px;
-        overflow-y: auto;
-        margin-top: 8px;
-
-        &.show {
-          display: block;
-        }
-
-        div {
-          padding: 12px 16px;
+        button {
+          border: 1px solid ${({ theme }) => theme.colors.neutral__300};
+          border-radius: 18px;
+          padding: 12px 20px;
           cursor: pointer;
+          background-color: white;
           transition: background-color 0.3s;
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          width: 100%;
 
           &:hover {
             background-color: ${({ theme }) => theme.colors.neutral__200};
+          }
+
+          svg {
+            margin-left: 8px;
+          }
+        }
+
+        .dropdown-products {
+          display: none;
+          position: absolute;
+          max-width: 256px;
+          background-color: ${({ theme }) => theme.colors.neutral__100};
+          border: 1px solid ${({ theme }) => theme.colors.neutral__300};
+          border-radius: 18px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+          width: 100%;
+          max-height: 200px;
+          overflow-y: auto;
+          margin-top: 8px;
+
+          &.show {
+            display: block;
+          }
+
+          div {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: ${({ theme }) => theme.colors.neutral__200};
+            }
           }
         }
       }
@@ -116,6 +126,7 @@ const StyledProductSection = styled.section`
 
     .filter-buttons {
       display: flex;
+      justify-content: space-between;
     }
   }
 
@@ -144,19 +155,23 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   };
 
   return (
-    <StyledProductSection>
+    <StyledProductSection id="products-section">
       <Container>
         <h2 className="uppercase">
           <span className="gradiant-titulo">tech</span> products
         </h2>
 
-        <div className="filter-section">
-          <div>
+        {/* START FILTER */}
+        <div className="filter-container">
+          <div className="filter">
             <div className="dropdown">
-              <p>Filter by:</p>
-              <button onClick={handleDropdownClick}>
-                All Products <Arrow />
-              </button>
+              <div className="filter-by">
+                {/* <p className="">Filter by:</p> */}
+                <button onClick={handleDropdownClick}>
+                  All Products <Arrow />
+                </button>
+              </div>
+
               <div
                 className={`dropdown-products ${isDropdownOpen ? "show" : ""}`}>
                 {data.map((product, index) => (
@@ -164,28 +179,32 @@ const ProductSection: React.FC<ProductSectionProps> = ({
                 ))}
               </div>
             </div>
+
             <div className="filter-buttons">
-              <Button
-                variant="sort-selector"
-                onClick={function (): void {
-                  throw new Error("Function not implemented.");
-                }}>
-                Most Recent
-              </Button>
-              <Button
-                variant="sort-selector"
-                onClick={function (): void {
-                  throw new Error("Function not implemented.");
-                }}>
-                Lower Price
-              </Button>
-              <Button
-                variant="sort-selector"
-                onClick={function (): void {
-                  throw new Error("Function not implemented.");
-                }}>
-                Highest Price
-              </Button>
+              {/* <p>Sort by:</p> */}
+              <div className="filter-buttons">
+                <Button
+                  variant="sort-selector"
+                  onClick={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}>
+                  Most Recent
+                </Button>
+                <Button
+                  variant="sort-selector"
+                  onClick={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}>
+                  Lower Price
+                </Button>
+                <Button
+                  variant="sort-selector"
+                  onClick={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}>
+                  Highest Price
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -203,6 +222,8 @@ const ProductSection: React.FC<ProductSectionProps> = ({
             </div>
           </div>
         </div>
+
+        {/* END FILTER  */}
         <div className="products-container">
           {loading
             ? Array.from({ length: 9 }).map((_, index) => (

@@ -72,17 +72,42 @@ export async function addPoints(amount: number) {
   return data;
 }
 
-export async function reedemProduct(productId: string) {
-  const data = await fetch(process.env.API_BASE + "/redeem", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.API_TOKEN}`,
-    },
-    body: JSON.stringify({ productId }),
-  });
+// export async function reedemProduct(productId: string) {
+//   const data = await fetch(process.env.API_BASE + "/redeem", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${process.env.API_TOKEN}`,
+//     },
+//     body: JSON.stringify({ productId }),
+//   });
 
-  return data;
+//   return data;
+// }
+
+export async function reedemProduct(productId: string) {
+  try {
+    const response = await fetch(`${process.env.API_BASE}/redeem`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.API_TOKEN}`,
+      },
+      body: JSON.stringify({ productId }),
+    });
+
+    if (!response.ok) {
+      // Manejar respuestas no exitosas
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Error redeeming product");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error redeeming product:", error);
+    throw error; // Rethrow el error para que pueda ser manejado por el código que llama a esta función
+  }
 }
 
 export async function getRedemptionHistory() {
