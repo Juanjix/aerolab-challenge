@@ -30,7 +30,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   const [filteredData, setFilteredData] = useState(data);
   const [sortCriteria, setSortCriteria] = useState<
     "mostRecent" | "lowerPrice" | "higherPrice" | null
-  >(null);
+  >("mostRecent");
   const productsPerPage = 8;
 
   useEffect(() => {

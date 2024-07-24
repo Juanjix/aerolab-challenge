@@ -7,6 +7,7 @@ interface ButtonProps {
   variant?:
     | "cta"
     | "cta-processing"
+    | "cta-desabled"
     | "landing-cta"
     | "sort-selector"
     | "sort-selector-active"
@@ -15,6 +16,7 @@ interface ButtonProps {
     | "number-selector-active"
     | "dropdown-products"
     | "dropdown-products-active";
+
   children: React.ReactNode;
   onClick: () => void;
 }
@@ -56,6 +58,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   ${({ $variant }) => $variant === "cta" && ctaStyles}
   ${({ $variant }) => $variant === "cta-processing" && ctaProcessing}
+  ${({ $variant }) => $variant === "cta-disabled" && ctaDisabled}
   ${({ $variant }) => $variant === "landing-cta" && landingCtaStyle}
   ${({ $variant }) => $variant === "aero-pay-dropdown" && aeroPayStyles}
   ${({ $variant }) => $variant === "sort-selector" && sortSelectorStyles}
@@ -137,13 +140,25 @@ const ctaProcessing = css`
   justify-content: center;
 `;
 
-const ctaDisabled = css``;
+const ctaDisabled = css`
+  color: ${({ theme }) => theme.colors.neutral__600};
+
+  svg {
+    * {
+      stroke: ${({ theme }) => theme.colors.neutral__600};
+    }
+  }
+`;
 
 const landingCtaStyle = css`
   background: ${({ theme }) => theme.colors.brand};
   color: white;
   border: 1px solid ${({ theme }) => theme.colors.brand};
-  padding: 32px 40px;
+  padding: 15px 20px;
+  max-width: 318px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
   &:hover {
     background: ${({ theme }) => theme.colors.brandHover};

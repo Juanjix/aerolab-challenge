@@ -39,9 +39,14 @@ const StyledHero = styled.section`
 
     .text-container {
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       @media (min-width: 1280px) {
         width: 602px;
+        align-items: start;
       }
 
       .uppercase {
@@ -54,16 +59,22 @@ const StyledHero = styled.section`
         text-transform: uppercase;
       }
 
+      .paragraph {
+        max-width: 289px;
+        widht: 100%;
+        margin-bottom: 30px;
+
+        @media (min-width: 920px) {
+          max-width: 523px;
+          width: 100%;
+        }
+      }
+
       span {
         background: ${({ theme }) => theme.colors.brand};
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-      }
-
-      button {
-        max-width: 303px;
-        margin-top: 20px;
       }
     }
 
@@ -180,7 +191,7 @@ const Hero: React.FC = () => {
                   <span>TECH</span>
                   <br /> ZONE
                 </h1>
-                <p>
+                <p className="paragraph">
                   Here you’ll be able to redeem all of your hard-earned
                   Aeropoints and exchange them for cool tech.
                 </p>
