@@ -3,7 +3,6 @@
 import styled from "styled-components";
 
 // Actions
-import { getUser, addPoints } from "@/app/actions";
 import { User } from "@/types";
 
 // Icons
@@ -129,13 +128,13 @@ const Menu = (props: {
               <Kite /> {points}
               {!show ? (
                 <div>
-                  <span>
+                  <span className="icons-small">
                     <ArrowPay />
                   </span>
                 </div>
               ) : (
                 <div className="translate">
-                  <span>
+                  <span className="icons-small">
                     <ArrowPay />
                   </span>
                 </div>

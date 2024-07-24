@@ -6,6 +6,7 @@ export interface User {
   reedemHistory: string[];
 }
 export interface Product {
+  createdAt: string | number | Date;
   _id: string;
   name: string;
   description?: string;

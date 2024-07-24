@@ -34,8 +34,19 @@ const StyledButton = styled.button<StyledButtonProps>`
   text-align: center;
 
   svg {
-    * {
-      background-color: white;
+    width: 24px;
+    height: 24px;
+
+    @media (min-width: 920px) {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  span {
+    .icons-small {
+      width: 24px;
+      height: 24px;
     }
   }
 
@@ -136,7 +147,7 @@ const landingCtaStyle = css`
 const aeroPayStyles = css`
   background-clip: text;
   border: 1px solid ${({ theme }) => theme.colors.neutral__500};
-  padding: 10px 32px;
+  padding: 10px 0px;
 
   svg {
     transition: transform 0.3s;

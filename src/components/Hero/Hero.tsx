@@ -201,6 +201,7 @@ const Hero: React.FC = () => {
                     maxWidth: "629px",
                     height: "auto",
                   }}
+                  priority
                 />
               </div>
             </>

@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
 import styled from "styled-components";
 
 // Icons
@@ -26,8 +26,6 @@ const StyledProductSection = styled.section`
     margin-top: 40px;
 
     .filter {
-      // display: flex;
-
       .dropdown {
         margin-right: 100px;
 
@@ -89,7 +87,6 @@ const StyledProductSection = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
-      display: none;
 
       .arrow {
         cursor: pointer;
@@ -149,9 +146,69 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   setPoints,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filteredData, setFilteredData] = useState(data);
+  const [sortCriteria, setSortCriteria] = useState<
+    "mostRecent" | "lowerPrice" | "higherPrice" | null
+  >(null);
+  const productsPerPage = 9;
+
+  useEffect(() => {
+    setFilteredData(data);
+  }, [data]);
 
   const handleDropdownClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleFilter = (category: string) => {
+    if (category === "All Categories") {
+      setFilteredData(data);
+    } else {
+      setFilteredData(data.filter((product) => product.category === category));
+    }
+    setCurrentPage(1);
+  };
+
+  const handleSort = (
+    criteria: "mostRecent" | "lowerPrice" | "higherPrice"
+  ) => {
+    setSortCriteria(criteria);
+  };
+
+  const sortedData = () => {
+    switch (sortCriteria) {
+      case "mostRecent":
+        return [...filteredData].sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+      case "lowerPrice":
+        return [...filteredData].sort((a, b) => a.cost - b.cost);
+      case "higherPrice":
+        return [...filteredData].sort((a, b) => b.cost - a.cost);
+      default:
+        return filteredData;
+    }
+  };
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = sortedData().slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(filteredData.length / productsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   return (
@@ -166,70 +223,74 @@ const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="filter">
             <div className="dropdown">
               <div className="filter-by">
-                {/* <p className="">Filter by:</p> */}
                 <button onClick={handleDropdownClick}>
-                  All Products <Arrow />
+                  All Categories <Arrow />
                 </button>
               </div>
 
               <div
                 className={`dropdown-products ${isDropdownOpen ? "show" : ""}`}>
-                {data.map((product, index) => (
-                  <div key={index}>{product.category}</div>
+                <div onClick={() => handleFilter("All Categories")}>
+                  All Categories
+                </div>
+                {Array.from(
+                  new Set(data.map((product) => product.category))
+                ).map((category, index) => (
+                  <div key={index} onClick={() => handleFilter(category)}>
+                    {category}
+                  </div>
                 ))}
               </div>
             </div>
 
             <div className="filter-buttons">
-              {/* <p>Sort by:</p> */}
-              <div className="filter-buttons">
-                <Button
-                  variant="sort-selector"
-                  onClick={function (): void {
-                    throw new Error("Function not implemented.");
-                  }}>
-                  Most Recent
-                </Button>
-                <Button
-                  variant="sort-selector"
-                  onClick={function (): void {
-                    throw new Error("Function not implemented.");
-                  }}>
-                  Lower Price
-                </Button>
-                <Button
-                  variant="sort-selector"
-                  onClick={function (): void {
-                    throw new Error("Function not implemented.");
-                  }}>
-                  Highest Price
-                </Button>
-              </div>
+              <Button
+                variant="sort-selector"
+                onClick={() => handleSort("mostRecent")}>
+                Most Recent
+              </Button>
+              <Button
+                variant="sort-selector"
+                onClick={() => handleSort("lowerPrice")}>
+                Lower Price
+              </Button>
+              <Button
+                variant="sort-selector"
+                onClick={() => handleSort("higherPrice")}>
+                Highest Price
+              </Button>
             </div>
           </div>
 
           <div className="pagination">
             <div className="arrow">
               <div className="left">
-                <Arrow />
+                <button onClick={prevPage}>
+                  <Arrow />
+                </button>
               </div>
             </div>{" "}
-            Page <span>1 of 2</span>
+            Page{" "}
+            <span>
+              {currentPage} of{" "}
+              {Math.ceil(filteredData.length / productsPerPage)}
+            </span>
             <div className="arrow">
               <div className="right">
-                <Arrow />
+                <button onClick={nextPage}>
+                  <Arrow />
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        {/* END FILTER  */}
         <div className="products-container">
           {loading
-            ? Array.from({ length: 9 }).map((_, index) => (
+            ? Array.from({ length: productsPerPage }).map((_, index) => (
                 <ProductCardSkeleton key={index} />
               ))
-            : data.map((product, key) => (
+            : currentProducts.map((product, key) => (
                 <ProductCard
                   key={key}
                   product={product}
