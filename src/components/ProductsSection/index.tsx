@@ -21,36 +21,20 @@ interface ProductSectionProps {
 // Styled
 const StyledProductSection = styled.section`
   .filter-container {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     margin-top: 40px;
 
     .filter {
+      @media (min-width: 1024px) {
+        // display: flex;
+        // align-items: center;
+      }
+
       .dropdown {
-        margin-right: 100px;
+        margin-bottom: 24px;
 
-        button {
-          border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-          border-radius: 18px;
-          padding: 12px 20px;
-          cursor: pointer;
-          background-color: white;
-          transition: background-color 0.3s;
-          display: flex;
-          align-items: center;
-          white-space: nowrap;
-          width: 100%;
-
-          &:hover {
-            background-color: ${({ theme }) => theme.colors.neutral__200};
-          }
-
-          svg {
-            margin-left: 8px;
-          }
-        }
-
-        .dropdown-products {
+        .dropdown-categories {
           display: none;
           position: absolute;
           max-width: 256px;
@@ -79,6 +63,9 @@ const StyledProductSection = styled.section`
           }
         }
       }
+
+      .filter-buttons {
+      }
     }
 
     .pagination {
@@ -87,6 +74,7 @@ const StyledProductSection = styled.section`
       display: flex;
       align-items: center;
       justify-content: center;
+      display: none;
 
       .arrow {
         cursor: pointer;
@@ -151,7 +139,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   const [sortCriteria, setSortCriteria] = useState<
     "mostRecent" | "lowerPrice" | "higherPrice" | null
   >(null);
-  const productsPerPage = 9;
+  const productsPerPage = 8;
 
   useEffect(() => {
     setFilteredData(data);
@@ -211,6 +199,14 @@ const ProductSection: React.FC<ProductSectionProps> = ({
     }
   };
 
+  const GradientText = styled.span`
+    background: linear-gradient(102.47deg, #1667d9 -5.34%, #f279f2 106.58%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  `;
+
   return (
     <StyledProductSection id="products-section">
       <Container>
@@ -223,13 +219,17 @@ const ProductSection: React.FC<ProductSectionProps> = ({
           <div className="filter">
             <div className="dropdown">
               <div className="filter-by">
-                <button onClick={handleDropdownClick}>
+                <Button
+                  variant="dropdown-products"
+                  onClick={handleDropdownClick}>
                   All Categories <Arrow />
-                </button>
+                </Button>
               </div>
 
               <div
-                className={`dropdown-products ${isDropdownOpen ? "show" : ""}`}>
+                className={`dropdown-categories ${
+                  isDropdownOpen ? "show" : ""
+                }`}>
                 <div onClick={() => handleFilter("All Categories")}>
                   All Categories
                 </div>
@@ -245,19 +245,31 @@ const ProductSection: React.FC<ProductSectionProps> = ({
 
             <div className="filter-buttons">
               <Button
-                variant="sort-selector"
+                variant={
+                  sortCriteria === "mostRecent"
+                    ? "sort-selector-active"
+                    : "sort-selector"
+                }
                 onClick={() => handleSort("mostRecent")}>
-                Most Recent
+                <span className="gradient-text">Most Recent</span>
               </Button>
               <Button
-                variant="sort-selector"
+                variant={
+                  sortCriteria === "lowerPrice"
+                    ? "sort-selector-active"
+                    : "sort-selector"
+                }
                 onClick={() => handleSort("lowerPrice")}>
-                Lower Price
+                <span className="gradient-text">Lower Price</span>
               </Button>
               <Button
-                variant="sort-selector"
+                variant={
+                  sortCriteria === "higherPrice"
+                    ? "sort-selector-active"
+                    : "sort-selector"
+                }
                 onClick={() => handleSort("higherPrice")}>
-                Highest Price
+                <span className="gradient-text">Highest Price</span>
               </Button>
             </div>
           </div>

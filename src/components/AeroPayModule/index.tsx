@@ -1,19 +1,15 @@
-// "use client";
-
 import React, { useState } from "react";
 
+// Style
 import styled from "styled-components";
 
 // Actions
-import { addPoints, getUser } from "@/app/actions";
+import { addPoints } from "@/app/actions";
 
 // Components
 import Button from "../Button/Button";
 import Kite from "../../../public/icons/kite-icon";
 import Kite2 from "../../../public/icons/aerocard-icon-kite";
-
-// Icons
-// import Arrow from "@/../public/icons/icon-close";
 
 // URL del SVG
 const svgUrl = "/icons/wave-pattern-card.svg";
@@ -80,23 +76,10 @@ const AeroPayModule = (props: {
     await addPoints(amount);
   };
 
-  // const handleClick = async (amount: number) => {
-  //   setLoading(true);
-  //   try {
-  //     const user = await getUser();
-  //     await addPoints(amount);
-  //     setPoints(user.points + amount);
-  //   } catch (error) {
-  //     console.error("Failed to add points:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <StyledAeroPayModule>
       <div className="titulo">
-        <p className="black">Pay Balance</p>
+        <p className="black">Add Balance</p>
         {/* <Arrow /> */}
       </div>
       <div className="aero-pay-card-container">
@@ -112,25 +95,19 @@ const AeroPayModule = (props: {
         </div>
         <div className="add-section">
           <Button
-            variant={
-              amount === 1000 ? "number-selector-active" : "number-selector"
-            }
+            variant={amount === 1000 ? "sort-selector-active" : "sort-selector"}
             onClick={() => setAmount(1000)}>
-            1000
+            <span className="gradient-text">1000</span>
           </Button>
           <Button
-            variant={
-              amount === 5000 ? "number-selector-active" : "number-selector"
-            }
+            variant={amount === 5000 ? "sort-selector-active" : "sort-selector"}
             onClick={() => setAmount(5000)}>
-            5000
+            <span className="gradient-text">5000</span>
           </Button>
           <Button
-            variant={
-              amount === 7500 ? "number-selector-active" : "number-selector"
-            }
+            variant={amount === 7500 ? "sort-selector-active" : "sort-selector"}
             onClick={() => setAmount(7500)}>
-            7500
+            <span className="gradient-text">7500</span>
           </Button>
         </div>
         <div className="send">

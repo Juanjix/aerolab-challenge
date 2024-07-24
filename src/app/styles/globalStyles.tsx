@@ -57,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 600;
     line-height: 150%;
     letter-spacing: 0;
     color: ${({ theme }) => theme.colors.neutral__600};
@@ -67,16 +67,25 @@ const GlobalStyle = createGlobalStyle`
     }
 
     &.all-caps{
-      letter-spacing: 24;
+      letter-spacing: 24%;
+    }
+
+    &.light-weight{
+      font-weight: 500;
     }
 
     &.small{
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0;
+      letter-spacing: 5%;
 
       @media screen (min-width: 920px){
         font-size: 14px;
+        letter-spacing: 0%;
+      }
+
+      &.all-caps{
+        text-tranform: uppercase;
       }
     }
 

@@ -48,7 +48,11 @@ const StyledMenu = styled.menu`
     span {
       display: flex;
       align-items: center;
-      margin-left: 20px;
+      justify-content: center;
+
+      .icons-small {
+        margin-left: 20px;
+      }
     }
 
     .translate {
@@ -57,10 +61,6 @@ const StyledMenu = styled.menu`
           transform: rotate(180deg);
         }
       }
-    }
-
-    svg {
-      margin-right: 10px;
     }
 
     .aero-pay-container {
@@ -125,7 +125,10 @@ const Menu = (props: {
           </div>
           <div>
             <Button variant="aero-pay-dropdown" onClick={() => handleModal()}>
-              <Kite /> {points}
+              <div>
+                <Kite />
+              </div>
+              {points}
               {!show ? (
                 <div>
                   <span className="icons-small">

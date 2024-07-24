@@ -20,16 +20,45 @@ const StyledWalkthrough = styled.section`
   padding: 300px 0 120px 0;
   position: relative;
   z-index: 9999;
+  // overflow: hidden;
 
   @media (min-width: 1024px) {
     padding: 150px 0 10px 0;
+  }
+
+  .illustration-container {
+    background: url("/images/hero-desktop.png") center center;
+    background-size: cover;
+    max-width: 460px;
+    width: 100%;
+    height: 518px;
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: 50%;
+
+    @media (min-width: 1024px) {
+      max-width: 580px;
+      top: -350px;
+    }
+
+    @media (min-width: 1260px) {
+      display: none;
+    }
+
+    .illustration {
+      width: 580px;
+      height: auto;
+    }
   }
 
   .cards-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    z-index: 1;
+    z-index: 9999;
+    position: relative;
 
     @media (min-width: 920px) {
       display: flex;
@@ -60,33 +89,6 @@ const StyledWalkthrough = styled.section`
         }
       }
     }
-
-    .illustration-container {
-      position: absolute;
-      top: -70px;
-      left: 50%;
-      transform: translateX(-50%);
-      right: 50%;
-      width: 100%;
-      overflow: hidden;
-      max-width: 460px;
-      width: 100%;
-      display: block;
-
-      @media (min-width: 1024px) {
-        max-width: 580px;
-        top: -350px;
-      }
-
-      @media (min-width: 1260px) {
-        display: none;
-      }
-
-      .illustration {
-        width: 580px;
-        height: auto; /* Mantiene la proporción */
-      }
-    }
   }
 `;
 
@@ -114,21 +116,9 @@ const WalkthrougData = [
 const WalkthroughSection = () => {
   return (
     <StyledWalkthrough>
+      <div className="illustration-container" />
       <Container>
         <div className="cards-container">
-          <div className="illustration-container">
-            <Image
-              src={Illustration}
-              alt={""}
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-              priority
-              className="illustration"
-              quality={100}
-            />
-          </div>
           {WalkthrougData.map((data, key) => (
             <div key={key} className={`card ${data.className}`}>
               <WalkthroughCard
