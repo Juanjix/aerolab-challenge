@@ -6,8 +6,7 @@ import GlobalStyle from "./styles/globalStyles";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/themes";
 
-// Menu
-import Menu from "@/components/Menu/Menu";
+// Components
 import Footer from "@/components/Footer/Footer";
 
 // Meta

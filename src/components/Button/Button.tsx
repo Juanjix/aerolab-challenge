@@ -13,7 +13,8 @@ interface ButtonProps {
     | "aero-pay-dropdown"
     | "number-selector"
     | "number-selector-active"
-    | "dropdown-products";
+    | "dropdown-products"
+    | "dropdown-products-active";
   children: React.ReactNode;
   onClick: () => void;
 }
@@ -37,6 +38,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   svg {
     width: 24px;
     height: 24px;
+    transition: transform 0.3s;
 
     @media (min-width: 920px) {
       width: 32px;
@@ -62,6 +64,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ $variant }) =>
     $variant === "number-selector-active" && numberSelectorActive}
   ${({ $variant }) => $variant === "dropdown-products" && dropdownProducts}
+  ${({ $variant }) =>
+    $variant === "dropdown-products-active" && dropdownProductsActive}
 `;
 
 const GradientText = styled.span`
@@ -157,31 +161,6 @@ const aeroPayStyles = css`
   }
 `;
 
-// const sortSelectorStyles = css`
-
-//   background-color: ${({ theme }) => theme.colors.neutral__200};
-//   background: linear-gradient(102.47deg, #176feb 0%, #ff80ff 100%);
-//   background-clip: text;
-//   -webkit-background-clip: text;
-//   -webkit-text-fill-color: transparent;
-//   color: transparent; /* Fallback for browsers that do not support these properties */
-//   padding: 8px 16px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   svg {
-//     margin-right: 8px;
-//   }
-
-//   &:hover {
-//     background: ${({ theme }) => theme.colors.brand};
-//   }
-
-//   &.active {
-//     background: ${({ theme }) => theme.colors.brand};
-//   }
-// `;
 const sortSelectorStyles = css`
   position: relative; /* Necesario para el ::before pseudo-element */
   display: flex;
@@ -190,7 +169,8 @@ const sortSelectorStyles = css`
   background-color: ${({ theme }) =>
     theme.colors.neutral__200}; /* Fondo del botón */
   color: transparent; /* Fallback for browsers that do not support these properties */
-  padding: 8px 16px;
+  padding: 10px 16px;
+  white-space: nowrap;
 
   &::before {
     content: "";
@@ -217,12 +197,14 @@ const sortSelectorStyles = css`
     margin-right: 8px;
   }
 `;
+
 const sortSelectorActiveStyles = css`
   background: ${({ theme }) => theme.colors.brand};
   padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 
   svg {
     margin-right: 8px;
@@ -265,6 +247,10 @@ const dropdownProducts = css`
   &:hover {
     background-color: ${({ theme }) => theme.colors.neutral__200};
   }
+
+  svg {
+    margin-left: 10px;
+  }
 `;
 
 const dropdownProductsActive = css`
@@ -283,6 +269,7 @@ const dropdownProductsActive = css`
   }
 
   svg {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
+    margin-left: 10px;
   }
 `;

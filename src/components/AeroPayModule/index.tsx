@@ -19,6 +19,7 @@ const StyledAeroPayModule = styled.div`
   border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
   background: white;
+  margin-top: -40px;
 
   .titulo {
     display: flex;

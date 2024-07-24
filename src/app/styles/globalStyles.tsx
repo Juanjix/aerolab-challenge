@@ -58,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-size: 16px;
     font-weight: 600;
-    line-height: 150%;
+    line-height: 27px;
     letter-spacing: 0;
     color: ${({ theme }) => theme.colors.neutral__600};
 

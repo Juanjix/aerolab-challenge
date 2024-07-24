@@ -8,7 +8,12 @@ const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 
-  @media (min-width: 440px) {
+  @media (min-width: 920px) {
+    padding: 0 48px;
+  }
+
+  @media (min-width: 1460px) {
+    max-width: 1460px;
     padding: 0;
   }
 `;

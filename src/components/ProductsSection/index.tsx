@@ -1,10 +1,11 @@
 import React, { Dispatch, SetStateAction, useState, useEffect } from "react";
-import styled from "styled-components";
-
-// Icons
+import {
+  StyledProductSection,
+  FilterContainer,
+  Pagination,
+  PaginationMobile,
+} from "../ProductSectionStyles";
 import Arrow from "../../../public/icons/arrow-pay";
-
-// Components
 import ProductCard from "../ProductCard";
 import { Product } from "@/types";
 import Container from "../Container";
@@ -17,115 +18,6 @@ interface ProductSectionProps {
   points: number;
   setPoints: Dispatch<SetStateAction<number>>;
 }
-
-// Styled
-const StyledProductSection = styled.section`
-  .filter-container {
-    // display: flex;
-    // justify-content: space-between;
-    margin-top: 40px;
-
-    .filter {
-      @media (min-width: 1024px) {
-        // display: flex;
-        // align-items: center;
-      }
-
-      .dropdown {
-        margin-bottom: 24px;
-
-        .dropdown-categories {
-          display: none;
-          position: absolute;
-          max-width: 256px;
-          background-color: ${({ theme }) => theme.colors.neutral__100};
-          border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-          border-radius: 16px;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-          z-index: 1;
-          width: 100%;
-          max-height: 200px;
-          overflow-y: auto;
-          margin-top: 8px;
-
-          &.show {
-            display: block;
-          }
-
-          div {
-            padding: 12px 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-
-            &:hover {
-              background-color: ${({ theme }) => theme.colors.neutral__200};
-            }
-          }
-        }
-      }
-
-      .filter-buttons {
-      }
-    }
-
-    .pagination {
-      border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      display: none;
-
-      .arrow {
-        cursor: pointer;
-        svg {
-          padding: 10px;
-          background: ${({ theme }) => theme.colors.brandLight};
-          border-radius: 5px;
-
-          &:hover {
-            background: ${({ theme }) => theme.colors.brandLight2};
-          }
-        }
-
-        .left {
-          svg {
-            transform: rotate(-90deg);
-          }
-        }
-
-        .right {
-          svg {
-            transform: rotate(90deg);
-          }
-        }
-      }
-
-      span {
-        background: ${({ theme }) => theme.colors.brand};
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-    }
-
-    .filter-buttons {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  .products-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 70px;
-
-    @media (min-width: 620px) {
-      justify-content: space-between;
-    }
-  }
-`;
 
 const ProductSection: React.FC<ProductSectionProps> = ({
   data,
@@ -150,11 +42,11 @@ const ProductSection: React.FC<ProductSectionProps> = ({
   };
 
   const handleFilter = (category: string) => {
-    if (category === "All Categories") {
-      setFilteredData(data);
-    } else {
-      setFilteredData(data.filter((product) => product.category === category));
-    }
+    setFilteredData(
+      category === "All Categories"
+        ? data
+        : data.filter((product) => product.category === category)
+    );
     setCurrentPage(1);
   };
 
@@ -199,14 +91,6 @@ const ProductSection: React.FC<ProductSectionProps> = ({
     }
   };
 
-  const GradientText = styled.span`
-    background: linear-gradient(102.47deg, #1667d9 -5.34%, #f279f2 106.58%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-  `;
-
   return (
     <StyledProductSection id="products-section">
       <Container>
@@ -215,14 +99,22 @@ const ProductSection: React.FC<ProductSectionProps> = ({
         </h2>
 
         {/* START FILTER */}
-        <div className="filter-container">
+        <FilterContainer>
           <div className="filter">
             <div className="dropdown">
               <div className="filter-by">
+                <p>Filter by:</p>
                 <Button
-                  variant="dropdown-products"
+                  variant={
+                    isDropdownOpen
+                      ? "dropdown-products-active"
+                      : "dropdown-products"
+                  }
                   onClick={handleDropdownClick}>
-                  All Categories <Arrow />
+                  <p>All Products</p>
+                  <span className="icons-small">
+                    <Arrow />
+                  </span>
                 </Button>
               </div>
 
@@ -231,19 +123,22 @@ const ProductSection: React.FC<ProductSectionProps> = ({
                   isDropdownOpen ? "show" : ""
                 }`}>
                 <div onClick={() => handleFilter("All Categories")}>
-                  All Categories
+                  <p>All Products</p>
                 </div>
                 {Array.from(
                   new Set(data.map((product) => product.category))
                 ).map((category, index) => (
                   <div key={index} onClick={() => handleFilter(category)}>
-                    {category}
+                    <p>{category}</p>
                   </div>
                 ))}
               </div>
             </div>
 
+            <div className="separador" />
+
             <div className="filter-buttons">
+              <p>Sort by:</p>
               <Button
                 variant={
                   sortCriteria === "mostRecent"
@@ -260,7 +155,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
                     : "sort-selector"
                 }
                 onClick={() => handleSort("lowerPrice")}>
-                <span className="gradient-text">Lower Price</span>
+                <span className="gradient-text">Lowest Price</span>
               </Button>
               <Button
                 variant={
@@ -273,44 +168,56 @@ const ProductSection: React.FC<ProductSectionProps> = ({
               </Button>
             </div>
           </div>
-
-          <div className="pagination">
-            <div className="arrow">
-              <div className="left">
-                <button onClick={prevPage}>
-                  <Arrow />
-                </button>
-              </div>
-            </div>{" "}
-            Page{" "}
+          {/* Pagination */}
+          <Pagination>
+            <button className="arrow left" onClick={prevPage}>
+              <Arrow />
+            </button>
+            <p>Page</p>
             <span>
-              {currentPage} of{" "}
-              {Math.ceil(filteredData.length / productsPerPage)}
+              <p>
+                {""}
+                {currentPage} of{" "}
+                {Math.ceil(filteredData.length / productsPerPage)}
+              </p>
             </span>
-            <div className="arrow">
-              <div className="right">
-                <button onClick={nextPage}>
-                  <Arrow />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+            <button className="arrow right" onClick={nextPage}>
+              <Arrow />
+            </button>
+          </Pagination>
+        </FilterContainer>
+        {/* END FILTER */}
 
         <div className="products-container">
           {loading
-            ? Array.from({ length: productsPerPage }).map((_, index) => (
-                <ProductCardSkeleton key={index} />
-              ))
-            : currentProducts.map((product, key) => (
+            ? Array(productsPerPage)
+                .fill(0)
+                .map((_, index) => <ProductCardSkeleton key={index} />)
+            : currentProducts.map((product) => (
                 <ProductCard
-                  key={key}
+                  key={product._id}
                   product={product}
                   points={points}
                   setPoints={setPoints}
                 />
-              ))}
+              ))}{" "}
         </div>
+        <PaginationMobile>
+          <button className="arrow left" onClick={prevPage}>
+            <Arrow />
+          </button>
+          <p>Page</p>
+          <span>
+            <p>
+              {""}
+              {currentPage} of{" "}
+              {Math.ceil(filteredData.length / productsPerPage)}
+            </p>
+          </span>
+          <button className="arrow right" onClick={nextPage}>
+            <Arrow />
+          </button>
+        </PaginationMobile>
       </Container>
     </StyledProductSection>
   );
