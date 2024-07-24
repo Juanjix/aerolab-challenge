@@ -18,6 +18,7 @@ import { Arrow } from "../../../public/icons/arrow";
 
 import SkeletonBox from "../SkeletonBox";
 import SkeletonText from "../SkeletonText";
+// import Icon from "../../../public/icons/icon-error";
 
 // URL del SVG
 const svgUrl = "/icons/background-wave.svg";
@@ -185,7 +186,9 @@ const Hero: React.FC = () => {
                 </p>
                 <div className="cta-button">
                   <Button variant="landing-cta" onClick={handleButtonClick}>
-                    <a href="#products-section">View all Products</a>
+                    <a href="#products-section">
+                      View all Products <Arrow />
+                    </a>
                   </Button>
                 </div>
               </div>

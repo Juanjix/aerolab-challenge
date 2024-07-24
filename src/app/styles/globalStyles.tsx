@@ -103,6 +103,11 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     font-family: ${({ theme }) => theme.fonts.primary};
     font-weight: 500; 
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
   }
 
   section{

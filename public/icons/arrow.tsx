@@ -1,14 +1,15 @@
 export const Arrow = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="11"
-      height="14"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
-      viewBox="0 0 15 18">
+      xmlns="http://www.w3.org/2000/svg">
       <path
-        fill="#fff"
-        d="M14.75 11.6L8.5 17.85H6.75L.5 11.6l1.75-1.775 4.125 4.1V0h2.5v13.925L13 9.8l1.75 1.8z"></path>
+        d="M17.0625 13.2L12.375 17.8875H11.0625L6.375 13.2L7.6875 11.8687L10.7812 14.9437V4.5H12.6563V14.9437L15.75 11.85L17.0625 13.2Z"
+        fill="white"
+      />
     </svg>
   );
 };
