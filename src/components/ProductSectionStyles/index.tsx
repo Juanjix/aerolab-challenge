@@ -90,6 +90,7 @@ export const FilterContainer = styled.div`
       display: flex;
       align-items: center;
       white-space: nowrap;
+      overflow: scroll;
       p {
         margin-right: 10px;
       }

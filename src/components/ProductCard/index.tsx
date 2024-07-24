@@ -134,14 +134,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </div>
           </div>
         </div>
-        {/* {success === true ? (
-          <NotificationToast type={"success"} message={"awdawda"} />
-        ) : (
-          <NotificationToast
-            type={"error"}
-            message={"There was a problem white the transaccion"}
-          />
-        )} */}
         {notification.type && (
           <NotificationToast
             type={notification.type}

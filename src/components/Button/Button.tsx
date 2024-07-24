@@ -27,13 +27,14 @@ interface StyledButtonProps {
 const StyledButton = styled.button<StyledButtonProps>`
   border-radius: 4px;
   cursor: pointer;
-  font-family: ${({ theme }) => theme.fonts.cta};
   border-radius: 16px;
   color: white;
   font-weight: 600;
   border: none;
   width: 100%;
   text-align: center;
+  font-family: ${({ theme }) => theme.fonts.primary};
+  font-size: 16px;
 
   svg {
     width: 24px;
@@ -135,6 +136,8 @@ const ctaProcessing = css`
   align-items: center;
   justify-content: center;
 `;
+
+const ctaDisabled = css``;
 
 const landingCtaStyle = css`
   background: ${({ theme }) => theme.colors.brand};
