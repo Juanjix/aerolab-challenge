@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import WalkthroughCard from "../WalkthroughCard/index";
-import Image from "next/image";
 
 // Imágenes
 import Step1 from "@/../public/images/Saly-1.png";
@@ -8,9 +7,9 @@ import Step3 from "@/../public/images/Saly-2.png";
 import Step2 from "@/../public/images/Saly-3.png";
 
 // Icons
-
-// Ilustracion
-import Illustration from "@/../public/images/hero-desktop.png";
+import Icon1 from "@/../public/icons/icon-1.svg";
+import Icon2 from "@/../public/icons/icon-2.svg";
+import Icon3 from "@/../public/icons/icon-3.svg";
 
 // Container
 import Container from "../Container";
@@ -94,22 +93,25 @@ const StyledWalkthrough = styled.section`
 
 const WalkthrougData = [
   {
-    titulo: "1--BROWSE",
+    titulo: "1—BROWSE",
     imagen: Step1,
     sentence: "Browse our tech catalog with more than 20 top tech products",
     className: "step-1",
+    icon: Icon1,
   },
   {
-    titulo: "2--CHOOSE",
+    titulo: "2—CHOOSE",
     imagen: Step2,
     sentence: "Exchange your hard-earned AeroPoints for a cool tech item",
     className: "step-2",
+    icon: Icon2,
   },
   {
-    titulo: "3--ENJOY",
+    titulo: "3—ENJOY",
     imagen: Step3,
     sentence: "All done We’ll take care of delivery of your tech item!",
     className: "step-3",
+    icon: Icon3,
   },
 ];
 
@@ -126,6 +128,7 @@ const WalkthroughSection = () => {
                   imagen: data.imagen,
                   titulo: data.titulo,
                   sentence: data.sentence,
+                  icon: data.icon,
                 }}
               />
             </div>

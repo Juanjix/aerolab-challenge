@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Image from "next/image";
-import Icon from "../../../public/icons/icon-titulo";
 import { StaticImageData } from "next/image";
 
 // Definición de los estilos
@@ -60,14 +59,19 @@ const StyledWalkCard = styled.div`
       padding: 20px;
       border-radius: 16px;
 
-      .step {
+      .step-text {
         display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-        background: ${({ theme }) => theme.colors.brand};
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        .icon {
+          margin-right: 8px;
+        }
+        .step {
+          display: flex;
+          align-items: center;
+          background: ${({ theme }) => theme.colors.brand};
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
       }
     }
   }
@@ -77,12 +81,13 @@ interface WalkthroughProps {
   imagen: StaticImageData;
   titulo: string;
   sentence: string;
+  icon: StaticImageData;
 }
 
 const WalkthroughCard: React.FC<{ WalkthroughProps: WalkthroughProps }> = ({
   WalkthroughProps,
 }) => {
-  const { imagen, titulo, sentence } = WalkthroughProps;
+  const { imagen, titulo, sentence, icon: Icon } = WalkthroughProps;
 
   return (
     <StyledWalkCard>
@@ -100,10 +105,11 @@ const WalkthroughCard: React.FC<{ WalkthroughProps: WalkthroughProps }> = ({
           />
         </div>
         <div className="text-container">
-          <h3 className="step">
-            <Icon />
-            {titulo}
-          </h3>
+          <div className="step-text">
+            <Image src={Icon} alt={""} className="icon" />
+            <h3 className="step">{titulo}</h3>
+          </div>
+
           <p>{sentence}</p>
         </div>
       </div>
