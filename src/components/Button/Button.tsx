@@ -7,7 +7,7 @@ interface ButtonProps {
   variant?:
     | "cta"
     | "cta-processing"
-    | "cta-desabled"
+    | "cta-disabled"
     | "landing-cta"
     | "sort-selector"
     | "sort-selector-active"
@@ -142,12 +142,13 @@ const ctaProcessing = css`
 
 const ctaDisabled = css`
   color: ${({ theme }) => theme.colors.neutral__600};
-
-  svg {
-    * {
-      stroke: ${({ theme }) => theme.colors.neutral__600};
-    }
-  }
+  background: ${({ theme }) => theme.colors.neutral__200};
+  border: none;
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  // pointer-events: none;
+  cursor: not-allowed;
 `;
 
 const landingCtaStyle = css`

@@ -4,7 +4,9 @@ import styled from "styled-components";
 import Lazy from "../../../public/images/lazy.png";
 import Button from "../Button/Button";
 
-import Kite from "@/../public/icons/kite-icon";
+import Kite from "@/../public/icons/kite-icon-products";
+import KiteNotAllowed from "../../../public/icons/icon-kite-notallowed";
+
 import { Product } from "@/types";
 import { theme } from "@/app/styles/themes";
 import { getUser, reedemProduct } from "@/app/actions";
@@ -16,6 +18,7 @@ import NotificationToast from "../NotificationToast";
 const StyledProductCard = styled.div`
   margin-bottom: 40px;
   position: relative;
+
   .product-card {
     border: 1px solid ${theme.colors.neutral__300};
     border-radius: 16px;
@@ -42,6 +45,10 @@ const StyledProductCard = styled.div`
 
   button {
     width: 100%;
+
+    svg {
+      margin: 0px 10px;
+    }
   }
 `;
 
@@ -57,23 +64,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   setPoints,
 }) => {
   const [loading, setLoading] = useState(false);
-
-  // const handleClick = async (productId: string) => {
-  //   setLoading(true);
-  //   try {
-  //     const user = await getUser();
-  //     if (points >= product.cost) {
-  //       await reedemProduct(productId);
-  //       setPoints(user.points - product.cost);
-  //     } else {
-  //       console.log("Not enough points to redeem the product");
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to redeem product:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
 
   const [notification, setNotification] = useState<{
     type: "success" | "error" | null;
@@ -140,8 +130,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
             message={notification.message}
           />
         )}
-
-        {loading ? (
+        {points < product.cost ? (
+          <Button variant="cta-disabled" onClick={function (): void {}}>
+            You need{" "}
+            <span className="icons-small">
+              <KiteNotAllowed />{" "}
+            </span>
+            {product.cost}
+          </Button>
+        ) : loading ? (
           <Button
             variant="cta-processing"
             onClick={function (): void {
@@ -151,7 +148,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </Button>
         ) : (
           <Button variant="cta" onClick={() => handleClick(product._id)}>
-            Reedem for <Kite /> {product.cost}
+            Reedem for{" "}
+            <span className="icons-small">
+              <Kite />{" "}
+            </span>
+            {product.cost}
           </Button>
         )}
       </div>

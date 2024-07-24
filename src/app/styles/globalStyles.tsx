@@ -116,6 +116,7 @@ const GlobalStyle = createGlobalStyle`
     @media (min-width: 920px){
       padding: 120px 0;
     }
+
   }
 
   .uppercase{
