@@ -18,7 +18,7 @@ const StyledProductCard = styled.div`
   position: relative;
   .product-card {
     border: 1px solid ${theme.colors.neutral__300};
-    border-radius: 18px;
+    border-radius: 16px;
     max-width: 335px;
     margin-bottom: 12px;
 

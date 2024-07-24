@@ -27,7 +27,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   border-radius: 4px;
   cursor: pointer;
   font-family: ${({ theme }) => theme.fonts.cta};
-  border-radius: 18px;
+  border-radius: 16px;
   color: white;
   font-weight: 600;
   border: none;
@@ -201,7 +201,7 @@ const sortSelectorStyles = css`
     height: 100%;
     background-color: ${({ theme }) =>
       theme.colors.neutral__200}; /* Fondo del botón */
-    border-radius: 18px;
+    border-radius: 16px;
     z-index: -1; /* Asegura que el fondo esté detrás del contenido */
   }
 
@@ -253,7 +253,7 @@ const numberSelectorActive = css`
 
 const dropdownProducts = css`
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-  border-radius: 18px;
+  border-radius: 16px;
   padding: 12px 20px;
   transition: background-color 0.3s;
   display: flex;
@@ -269,7 +269,7 @@ const dropdownProducts = css`
 
 const dropdownProductsActive = css`
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-  border-radius: 18px;
+  border-radius: 16px;
   padding: 12px 20px;
   cursor: pointer;
   background-color: white;

@@ -8,7 +8,7 @@ const StyledWalkCard = styled.div`
   max-width: 320px;
   width: 100%;
   height: auto;
-  border-radius: 18px;
+  border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
   margin: 0 auto;
   padding: 12px;
@@ -27,7 +27,7 @@ const StyledWalkCard = styled.div`
 
   .inside-card {
     border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-    border-radius: 18px;
+    border-radius: 16px;
     background-color: white;
     overflow: hidden;
 
@@ -58,7 +58,7 @@ const StyledWalkCard = styled.div`
 
     .text-container {
       padding: 20px;
-      border-radius: 18px;
+      border-radius: 16px;
 
       .step {
         display: flex;

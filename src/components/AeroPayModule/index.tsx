@@ -16,9 +16,8 @@ const svgUrl = "/icons/wave-pattern-card.svg";
 
 const StyledAeroPayModule = styled.div`
   width: 312px;
-  border-radius: 18px;
+  border-radius: 16px;
   border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-  // padding: 32px 0px;
   background: white;
 
   .titulo {
@@ -28,7 +27,7 @@ const StyledAeroPayModule = styled.div`
   }
 
   .aero-pay-card-container {
-    border-top: 1px solid grey;
+    border-top: 1px solid ${({ theme }) => theme.colors.neutral__300};
     padding: 32px 45px;
     padding: 20px;
 
@@ -36,7 +35,7 @@ const StyledAeroPayModule = styled.div`
       background: repeat center url(${svgUrl});
       max-width: 264px;
       background-color: ${({ theme }) => theme.colors.neutral__900};
-      border-radius: 18px;
+      border-radius: 16px;
       background-color: ${({ theme }) => theme.colors.neutral__900};
       padding: 20px;
 
@@ -113,7 +112,7 @@ const AeroPayModule = (props: {
         <div className="send">
           <Button onClick={() => handleClick(amount)} variant="sort-selector">
             <Kite />
-            Add Points
+            <span className="gradient-text">Add Points</span>
           </Button>
         </div>
       </div>

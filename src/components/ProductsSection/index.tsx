@@ -40,7 +40,7 @@ const StyledProductSection = styled.section`
           max-width: 256px;
           background-color: ${({ theme }) => theme.colors.neutral__100};
           border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-          border-radius: 18px;
+          border-radius: 16px;
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
           z-index: 1;
           width: 100%;
@@ -70,7 +70,7 @@ const StyledProductSection = styled.section`
 
     .pagination {
       border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-      border-radius: 18px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;

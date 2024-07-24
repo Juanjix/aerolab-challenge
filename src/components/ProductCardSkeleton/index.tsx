@@ -7,7 +7,7 @@ const StyledSkeletonProductCard = styled.div`
   margin-bottom: 40px;
   .skeleton-card {
     border: 1px solid ${({ theme }) => theme.colors.neutral__300};
-    border-radius: 18px;
+    border-radius: 16px;
     max-width: 335px;
     margin-bottom: 12px;
     overflow: hidden; /* Asegúrate de que el contenido no se desborde */
