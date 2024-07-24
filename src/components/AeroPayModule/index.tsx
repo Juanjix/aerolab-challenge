@@ -110,7 +110,13 @@ const AeroPayModule = (props: {
           </Button>
         </div>
         <div className="send">
-          <Button onClick={() => handleClick(amount)} variant="sort-selector">
+          <Button
+            onClick={() => handleClick(amount)}
+            variant={
+              amount === 7500 || 5000 || 1000
+                ? "sort-selector-active"
+                : "sort-selector"
+            }>
             <Kite />
             <span className="gradient-text">Add Points</span>
           </Button>

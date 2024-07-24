@@ -45,6 +45,10 @@ const StyledMenu = styled.menu`
       }
     }
 
+    .icon-menu {
+      margin-right: 8px;
+    }
+
     span {
       display: flex;
       align-items: center;
@@ -125,7 +129,7 @@ const Menu = (props: {
           </div>
           <div>
             <Button variant="aero-pay-dropdown" onClick={() => handleModal()}>
-              <div>
+              <div className="icon-menu">
                 <Kite />
               </div>
               {points}
