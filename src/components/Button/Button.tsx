@@ -134,7 +134,7 @@ const ctaProcessing = css`
   background: ${({ theme }) => theme.colors.specialSection};
   color: white;
   border: none;
-  padding: 15px 60px;
+  padding: 11px 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,7 +147,6 @@ const ctaDisabled = css`
   padding: 10px 60px;
   display: flex;
   align-items: center;
-  // pointer-events: none;
   cursor: not-allowed;
 `;
 

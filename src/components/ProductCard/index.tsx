@@ -24,6 +24,9 @@ const StyledProductCard = styled.div`
     border-radius: 16px;
     max-width: 335px;
     margin-bottom: 12px;
+    &:hover {
+      box-shadow: 1px 1px 1px 1px ${({ theme }) => theme.colors.neutral__300};
+    }
 
     .product-description {
       border-top: 1px solid ${theme.colors.neutral__300};
