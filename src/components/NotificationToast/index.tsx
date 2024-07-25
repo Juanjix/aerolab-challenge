@@ -23,7 +23,6 @@ const StyledToast = styled.div<{ type: "success" | "error" }>`
       type === "success" ? theme.colors.green : theme.colors.red};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
-
   position: fixed;
   bottom: 20px;
   left: 20px;
@@ -33,7 +32,6 @@ const StyledToast = styled.div<{ type: "success" | "error" }>`
     left: 50%;
     transform: translateX(-50%);
     right: auto;
-    margin-bottom: 140px;
   }
 
   svg {

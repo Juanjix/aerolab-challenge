@@ -19,13 +19,12 @@ const StyledWalkthrough = styled.section`
   padding: 300px 0 120px 0;
   position: relative;
   z-index: 9999;
-  // overflow: hidden;
 
   @media (min-width: 1024px) {
     padding: 150px 0 10px 0;
   }
 
-  .illustration-container {
+  .aero-ilustracion {
     background: url("/images/hero-desktop.png") center center;
     background-size: cover;
     max-width: 460px;
@@ -118,7 +117,7 @@ const WalkthrougData = [
 const WalkthroughSection = () => {
   return (
     <StyledWalkthrough>
-      <div className="illustration-container" />
+      <div className="aero-ilustracion" />
       <Container>
         <div className="cards-container">
           {WalkthrougData.map((data, key) => (
