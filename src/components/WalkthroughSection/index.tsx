@@ -70,8 +70,10 @@ const StyledWalkthrough = styled.section`
     }
 
     .card {
+      width: 100%;
       @media (min-width: 1320px) {
         margin-top: -190px;
+
         &.step-1 {
           transform: rotate(-4deg);
         }

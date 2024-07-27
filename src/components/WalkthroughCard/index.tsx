@@ -43,17 +43,17 @@ const StyledWalkCard = styled.div`
       border-top-left-radius: 18px;
       border-top-right-radius: 18px;
       background: ${({ theme }) => theme.colors.brand};
-    }
 
-    .image-container img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+      }
     }
 
     .text-container {
@@ -73,6 +73,10 @@ const StyledWalkCard = styled.div`
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
+      }
+
+      p {
+        max-width: 332px;
       }
     }
   }
