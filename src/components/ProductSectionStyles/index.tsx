@@ -12,6 +12,7 @@ export const StyledProductSection = styled.section`
 
     @media (min-width: 620px) {
       justify-content: space-between;
+      gap: 40px;
     }
   }
 `;

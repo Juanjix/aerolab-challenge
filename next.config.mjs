@@ -4,9 +4,6 @@ const nextConfig = {
     styledComponents: true,
   },
   reactStrictMode: true,
-  // images: {
-  //   domains: ["coding-challenge-api.aerolab.co"],
-  // },
   images: {
     remotePatterns: [
       {
