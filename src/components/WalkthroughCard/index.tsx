@@ -21,7 +21,8 @@ const StyledWalkCard = styled.div`
   }
 
   @media (min-width: 1920px) {
-    max-width: 532px;
+    max-width: 508px;
+    width: 100%;
   }
 
   .inside-card {

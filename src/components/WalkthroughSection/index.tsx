@@ -61,8 +61,8 @@ const StyledWalkthrough = styled.section`
     @media (min-width: 920px) {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
-      flex-wrap: wrap;
+      justify-content: center;
+      flex-wrap: nowrap;
     }
 
     @media (min-width: 1320px) {
