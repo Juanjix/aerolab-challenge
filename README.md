@@ -12,7 +12,6 @@ Getting Started
 First, run the development server:
 
 bash
-Copiar código
 npm run dev
 # or
 yarn dev
