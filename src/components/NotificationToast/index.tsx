@@ -23,10 +23,10 @@ const StyledToast = styled.div<{ type: "success" | "error" }>`
       type === "success" ? theme.colors.green : theme.colors.red};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000; // Ensure it appears above other content
+  // position: absolute;
+  // bottom: 20px;
+  // left: 20px;/
+  // z-index: 1000; // Ensure it appears above other content
 
   @media (max-width: 768px) {
     left: 50%;

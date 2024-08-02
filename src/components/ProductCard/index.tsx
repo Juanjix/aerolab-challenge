@@ -1,18 +1,13 @@
-// Components
 import Image from "next/image";
 import styled from "styled-components";
 import Lazy from "../../../public/images/lazy.png";
 import Button from "../Button/Button";
-
 import Kite from "@/../public/icons/kite-icon-products";
 import KiteNotAllowed from "../../../public/icons/icon-kite-notallowed";
-
 import { Product } from "@/types";
 import { theme } from "@/app/styles/themes";
 import { getUser, reedemProduct } from "@/app/actions";
 import { useState } from "react";
-
-// Componentes
 import NotificationToast from "../NotificationToast";
 
 const StyledProductCard = styled.div`
@@ -55,6 +50,27 @@ const StyledProductCard = styled.div`
   }
 `;
 
+const NotificationContainer = styled.div`
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column-reverse; /* Las notificaciones recientes aparecerán arriba */
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+  }
+`;
+
+interface Notification {
+  type: "success" | "error";
+  message: string;
+}
+
 interface ProductCardProps {
   product: Product;
   points: number;
@@ -67,11 +83,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
   setPoints,
 }) => {
   const [loading, setLoading] = useState(false);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
 
-  const [notification, setNotification] = useState<{
-    type: "success" | "error" | null;
-    message: string;
-  }>({ type: null, message: "" });
+  const addNotification = (notification: Notification) => {
+    setNotifications((prev) => [...prev, notification]);
+    setTimeout(() => {
+      setNotifications((prev) => prev.slice(1));
+    }, 5000); // Oculta el toast después de 5 segundos
+  };
 
   const handleClick = async (productId: string) => {
     setLoading(true);
@@ -80,25 +99,24 @@ const ProductCard: React.FC<ProductCardProps> = ({
       if (points >= product.cost) {
         await reedemProduct(productId);
         setPoints(user.points - product.cost);
-        setNotification({
+        addNotification({
           type: "success",
           message: `Successfully redeemed ${product.name}!`,
         });
       } else {
-        setNotification({
+        addNotification({
           type: "error",
           message: "Not enough points to redeem the product",
         });
       }
     } catch (error) {
-      setNotification({
+      addNotification({
         type: "error",
         message: "Failed to redeem product. Please try again.",
       });
     } finally {
       setLoading(false);
     }
-    setTimeout(() => setNotification({ type: null, message: "" }), 5000); // Oculta el toast después de 5 segundos
   };
 
   return (
@@ -127,12 +145,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </div>
           </div>
         </div>
-        {notification.type && (
-          <NotificationToast
-            type={notification.type}
-            message={notification.message}
-          />
-        )}
         {points < product.cost ? (
           <Button variant="cta-disabled" onClick={function (): void {}}>
             You need{" "}
@@ -158,6 +170,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
             {product.cost}
           </Button>
         )}
+        <NotificationContainer>
+          {notifications.map((notification, index) => (
+            <NotificationToast
+              key={index}
+              type={notification.type}
+              message={notification.message}
+            />
+          ))}
+        </NotificationContainer>
       </div>
     </StyledProductCard>
   );

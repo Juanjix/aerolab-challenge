@@ -7,13 +7,13 @@ import { useState, useEffect } from "react";
 import Hero from "@/components/Hero/Hero";
 import ProductSection from "@/components/ProductsSection";
 import WalkthroughSection from "@/components/WalkthroughSection";
+import Menu from "@/components/Menu/Menu";
 
 // Acciones
 import { getProducts, getUser } from "./actions";
 
 //Types
 import { Product } from "@/types";
-import Menu from "@/components/Menu/Menu";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -26,7 +26,7 @@ export default function Home() {
     const fetchUser = async () => {
       const data = await getUser();
 
-      console.log(data);
+      // console.log(data);
       setUser(data);
       setPoints(data.points);
     };
