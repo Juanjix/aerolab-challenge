@@ -3,8 +3,6 @@
 // Estados
 import { useState, useEffect } from "react";
 
-// import { Metadata } from "next";
-
 // Secciones
 import Hero from "@/components/Hero/Hero";
 import ProductSection from "@/components/ProductsSection";
@@ -16,11 +14,6 @@ import { getProducts, getUser } from "./actions";
 //Types
 import { Product } from "@/types";
 import Menu from "@/components/Menu/Menu";
-
-// export const metadata: Metadata = {
-//   title: "Aerolab",
-//   description: "Aerolab challenge by Juanso",
-// };
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);

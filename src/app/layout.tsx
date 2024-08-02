@@ -9,13 +9,7 @@ import { theme } from "./styles/themes";
 // Components
 import Footer from "@/components/Footer/Footer";
 
-// Meta
-// import { Metadata } from "next";
-
-// export const metadata: Metadata = {
-//   title: "Aerolab",
-//   description: "Aerolab challenge by Juanso",
-// };
+import { metadata } from "./metadata";
 
 export default function RootLayout({
   children,
@@ -24,6 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>{metadata.title as string}</title>
+        <meta name="description" content={metadata.description as string} />
+      </head>
       <body>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
