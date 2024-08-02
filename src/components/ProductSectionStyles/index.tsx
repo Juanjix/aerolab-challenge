@@ -92,9 +92,12 @@ export const FilterContainer = styled.div`
       align-items: center;
       white-space: nowrap;
       overflow: scroll;
+      scrollbar-width: none;
+      width: 95vw;
 
       @media (min-width: 720px) {
         overflow: hidden;
+        width: 100%;
       }
       p {
         margin-right: 10px;
