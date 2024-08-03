@@ -1,3 +1,4 @@
+<img width="1200" alt="metadata" src="https://github.com/user-attachments/assets/a69a24a6-633e-4893-8bcd-a61537061dbd">
 
 # Aerolab Challenge by Juanso
 
