@@ -170,7 +170,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
           </div>
           {/* Pagination */}
           <Pagination>
-            <button className="arrow left" onClick={prevPage}>
+            <button type="button" className="arrow left" onClick={prevPage}>
               <Arrow />
             </button>
             <p>Page</p>
@@ -181,7 +181,7 @@ const ProductSection: React.FC<ProductSectionProps> = ({
                 {Math.ceil(filteredData.length / productsPerPage)}
               </p>
             </span>
-            <button className="arrow right" onClick={nextPage}>
+            <button type="button" className="arrow right" onClick={nextPage}>
               <Arrow />
             </button>
           </Pagination>

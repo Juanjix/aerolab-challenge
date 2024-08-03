@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Aerolab Challenge by Juanso
 
-First, run the development server:
+This is a Next.js project bootstrapped with create-next-app.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Descripción
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Este proyecto es un desafío realizado para postularme como Frontend Developer en Aerolab. El objetivo principal es construir una vista de catálogo para una aplicación, permitiendo a los usuarios redimir productos mediante un sistema de puntos. El proyecto no solo busca ser visualmente atractivo sino también funcionalmente efectivo.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
 
-## Learn More
+- Vista de catálogo de productos.
+- Redención de productos usando puntos.
+- Agregar puntos a la cuenta de usuario.
+- Notificaciones toast para acciones exitosas o fallidas.
+- Paginación y filtrado de productos.
 
-To learn more about Next.js, take a look at the following resources:
+## Demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://aerolab-challenge-three.vercel.app/
+## Authors
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [@Juanjix](https://www.github.com/Juanjix)
 
-## Deploy on Vercel
+- [Portfolio](https://juanso.dev)
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[MIT](https://choosealicense.com/licenses/mit/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at juanjose.peralta92@gmail.com
+
