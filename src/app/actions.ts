@@ -72,19 +72,6 @@ export async function addPoints(amount: number) {
   return data;
 }
 
-// export async function reedemProduct(productId: string) {
-//   const data = await fetch(process.env.API_BASE + "/redeem", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${process.env.API_TOKEN}`,
-//     },
-//     body: JSON.stringify({ productId }),
-//   });
-
-//   return data;
-// }
-
 export async function reedemProduct(productId: string) {
   try {
     const response = await fetch(`${process.env.API_BASE}/redeem`, {

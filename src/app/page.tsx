@@ -26,7 +26,6 @@ export default function Home() {
     const fetchUser = async () => {
       const data = await getUser();
 
-      // console.log(data);
       setUser(data);
       setPoints(data.points);
     };

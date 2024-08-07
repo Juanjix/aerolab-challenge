@@ -30,11 +30,6 @@ https://aerolab-challenge-three.vercel.app/
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
 ## Feedback
 
 If you have any feedback, please reach out to us at juanjose.peralta92@gmail.com
