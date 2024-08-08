@@ -93,7 +93,7 @@ export async function reedemProduct(productId: string) {
     return data;
   } catch (error) {
     console.error("Error redeeming product:", error);
-    throw error; // Rethrow el error para que pueda ser manejado por el código que llama a esta función
+    throw error;
   }
 }
 
